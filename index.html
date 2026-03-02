@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomadic Assemblage Atlas — Doctoral Proposal Simulation</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F1E7;--bg2:#EDE5D0;--bg3:#E3D8C0;--ink:#1C1206;--dim:#6B5436;--dim2:#A08858;
+  --bord:#C8AE88;--tr:#8B2E0E;--tr2:#B83C1A;--go:#8A5E08;--go2:#B07C14;
+  --ms:#385218;--ms2:#527828;--am:#6A3E06;--sa:#9A7830;
+  --F:'Lora',serif;--FS:'IBM Plex Sans',sans-serif;--FM:'IBM Plex Mono',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink)}
+body{font-family:var(--FS);font-size:14px;display:flex;flex-direction:column}
+.hdr{height:52px;background:var(--ink);flex-shrink:0;display:flex;align-items:center;padding:0 18px;border-bottom:3px solid var(--tr)}
+.hdr-title{font-family:var(--F);font-size:16px;font-weight:500;color:#F5C842;margin-right:14px;white-space:nowrap}
+.hdr-sep{width:1px;height:22px;background:#2E1C08;margin:0 14px}
+.hdr-by{font-family:var(--FM);font-size:9px;color:#FFD966;letter-spacing:.07em;white-space:nowrap}
+.hdr-tabs{display:flex;margin-left:auto;height:100%}
+.tab{padding:0 15px;height:100%;display:flex;align-items:center;gap:7px;font-family:var(--FM);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#5A4020;cursor:pointer;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap}
+.tab:hover{color:#FFD966}
+.tab.on{color:#F5C842;border-bottom-color:var(--tr)}
+.tab-n{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;background:#2A1808;color:#5A4020;flex-shrink:0;font-weight:500}
+.tab.on .tab-n{background:var(--tr);color:#F5C842}
+.hdr-badge{margin-left:14px;padding:3px 9px;font-family:var(--FM);font-size:8px;letter-spacing:.08em;border:1px solid #2E1C08;color:#5A4020;white-space:nowrap}
+.body{display:flex;flex:1;overflow:hidden}
+.lft{width:268px;flex-shrink:0;background:var(--ink);border-right:1px solid #2A1808;overflow-y:auto;display:flex;flex-direction:column}
+.lft::-webkit-scrollbar{width:3px}.lft::-webkit-scrollbar-thumb{background:#2E1C08}
+.ex{display:none;flex-direction:column}.ex.on{display:flex}
+.ex-cap{padding:16px 16px 12px;border-bottom:1px solid #2A1808}
+.ex-num{font-family:var(--FM);font-size:8px;letter-spacing:.2em;color:#C89030;margin-bottom:5px}
+.ex-title{font-family:var(--F);font-size:16px;font-weight:500;color:#F5C842;line-height:1.3}
+.ex-blk{padding:12px 16px;border-bottom:1px solid #2A1808}
+.ex-blk-lbl{font-family:var(--FM);font-size:7px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:5px}
+.ex-blk-body{font-family:var(--FS);font-size:12px;color:#E8C870;line-height:1.65;font-style:italic}
+.ex-blk-body strong{color:#FFE566;font-style:normal;font-weight:500}
+.ex-blk-body em{color:#FFD966;font-style:italic}
+.ex-q{margin-top:9px;padding:7px 10px;border-left:2px solid var(--tr);font-family:var(--FS);font-size:12px;color:#FFD966;font-style:italic;line-height:1.5}
+.ex-leg{padding:12px 16px}
+.ex-leg-title{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:#C89030;margin-bottom:8px}
+.li{display:flex;align-items:flex-start;gap:9px;margin-bottom:8px}
+.li-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:2px;border:1px solid}
+.li-line{width:22px;flex-shrink:0;margin-top:7px;height:2px}
+.li-line.dash{background:repeating-linear-gradient(90deg,var(--tr2) 0,var(--tr2) 4px,transparent 4px,transparent 7px)}
+.li-line.solid{background:var(--ms2)}
+.li-text{font-size:11px;color:#E8C870;line-height:1.45}
+.li-text strong{color:#F5C842;font-weight:500;font-style:normal}
+.pills{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}
+.pill{padding:2px 7px;font-family:var(--FM);font-size:7px;letter-spacing:.08em;border:1px solid}
+.p-ant{color:#A8D8D8;border-color:rgba(122,152,152,.3)}.p-par{color:#A8D870;border-color:rgba(122,152,96,.3)}
+.p-nei{color:#FFD966;border-color:rgba(176,124,20,.3)}.p-gua{color:#F5C842;border-color:rgba(154,112,88,.3)}
+.p-met{color:#8870A0;border-color:rgba(136,112,160,.3)}
+.ctr{flex:1;position:relative;overflow:hidden;background:var(--bg)}
+.ctr::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(160,136,88,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(160,136,88,.07) 1px,transparent 1px);background-size:38px 38px}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+.tip{position:absolute;pointer-events:none;background:var(--ink);padding:10px 12px;max-width:210px;opacity:0;transition:opacity .15s;z-index:20;border-left:2px solid var(--tr)}
+.tip.on{opacity:1}
+.tip-t{font-family:var(--FM);font-size:7px;letter-spacing:.15em;color:#C89030;margin-bottom:3px}
+.tip-n{font-family:var(--F);font-size:14px;color:#F5C842;margin-bottom:3px;line-height:1.2}
+.tip-b{font-size:11px;color:#7A6040;line-height:1.5;font-style:italic}
+.ov{position:absolute;inset:0;display:none;overflow-y:auto}.ov.on{display:block}
+#gov-ov{background:var(--bg);padding:26px 30px}
+.gov-h{font-family:var(--F);font-size:24px;font-weight:500;margin-bottom:3px}
+.gov-sub{font-size:13px;color:var(--dim);font-style:italic;margin-bottom:16px}
+.gov-intro{padding:11px 15px;border-left:3px solid var(--tr);background:rgba(139,46,14,.04);font-size:13px;color:var(--ink);line-height:1.7;margin-bottom:18px;max-width:800px}
+.gov-veto{padding:13px 16px;border:1px solid rgba(139,46,14,.35);background:rgba(139,46,14,.04);margin-bottom:16px;max-width:800px}
+.gov-veto-lbl{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--tr);margin-bottom:5px}
+.gov-veto-txt{font-size:13px;line-height:1.7}
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:16px;max-width:800px}
+.gc{padding:13px 15px;border:1px solid var(--bord);background:var(--bg2)}
+.gc-lbl{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:3px}
+.gc-title{font-family:var(--F);font-size:15px;margin-bottom:5px}
+.gc-body{font-size:12px;color:var(--dim);line-height:1.6;font-style:italic}
+.gc.c{border-color:rgba(56,82,24,.35);background:rgba(56,82,24,.05)}.gc.c .gc-title{color:var(--ms2)}
+.gc.s{border-color:rgba(106,62,6,.3);background:rgba(106,62,6,.04)}.gc.s .gc-title{color:var(--go2)}
+.gc.r{border-color:rgba(138,94,8,.25);background:rgba(138,94,8,.04)}.gc.r .gc-title{color:var(--sa)}
+.gt{width:100%;border-collapse:collapse;max-width:800px}
+.gt th{font-family:var(--FM);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2);padding:5px 9px;text-align:left;border-bottom:1px solid var(--bord)}
+.gt td{padding:7px 9px;font-size:12px;border-bottom:1px solid rgba(200,174,136,.4)}
+.gt td:first-child{font-style:italic}
+.ot{display:inline-block;padding:1px 5px;font-family:var(--FM);font-size:7px;border:1px solid}
+.ot-c{color:var(--ms2);border-color:rgba(56,82,24,.4)}.ot-s{color:var(--go2);border-color:rgba(106,62,6,.35)}.ot-r{color:var(--sa);border-color:rgba(138,94,8,.3)}
+.rgt{width:256px;flex-shrink:0;background:var(--bg2);border-left:1px solid var(--bord);display:flex;flex-direction:column;overflow:hidden}
+.dp{flex:1;overflow-y:auto;display:none;flex-direction:column}.dp.on{display:flex}
+.dp::-webkit-scrollbar{width:3px}.dp::-webkit-scrollbar-thumb{background:var(--bord)}
+.dp-h{padding:13px 13px 10px;border-bottom:1px solid var(--bord)}
+.dp-type{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:3px}
+.dp-name{font-family:var(--F);font-size:18px;line-height:1.15;margin-bottom:3px}
+.dp-desc{font-size:12px;color:var(--dim);font-style:italic;line-height:1.5}
+.ds{padding:10px 13px;border-bottom:1px solid var(--bord)}
+.ds-lbl{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:6px}
+.dr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.dk{font-family:var(--FM);font-size:8px;color:var(--dim2)}.dv{font-size:12px;color:var(--ink)}
+.dt{font-size:12px;color:var(--dim);line-height:1.6;font-style:italic}
+.why{margin:7px 0;padding:8px 10px;border-left:2px solid var(--go);background:rgba(138,94,8,.05)}
+.why-lbl{font-family:var(--FM);font-size:7px;letter-spacing:.17em;text-transform:uppercase;color:var(--go);margin-bottom:3px}
+.why-txt{font-size:12px;color:var(--ink);line-height:1.6}
+.ob{padding:5px 8px;border:1px solid;font-family:var(--FM);font-size:8px;letter-spacing:.07em;margin-top:5px}
+.rl{display:flex;flex-direction:column;gap:3px}
+.ri{padding:5px 7px;background:var(--bg3);font-size:12px;display:flex;align-items:center;gap:7px}
+.rdot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.ch{display:flex;flex-direction:column;gap:1px}
+.cn{padding:6px 8px;border-left:2px solid;margin-left:6px;font-size:11px;line-height:1.4}
+.ca{margin-left:10px;font-family:var(--FM);font-size:8px;color:var(--dim2);padding:2px 0}
+.cv-b{position:absolute;top:9px;left:50%;transform:translateX(-50%);background:rgba(139,46,14,.08);border:1px solid rgba(139,46,14,.3);padding:4px 12px;font-family:var(--FM);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--tr2);pointer-events:none;opacity:0;transition:opacity .25s;z-index:5}
+.cv-b.on{opacity:1}
+.wm{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-family:var(--FM);font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:rgba(108,84,48,.18);pointer-events:none;white-space:nowrap;z-index:5}
+.sbar{height:25px;flex-shrink:0;background:var(--bg3);border-top:1px solid var(--bord);display:flex;align-items:center;padding:0 14px;gap:18px}
+.si{font-family:var(--FM);font-size:8px;letter-spacing:.07em;color:var(--dim2);display:flex;align-items:center;gap:4px}
+.si span{color:var(--am)}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-title">Nomadic Assemblage Atlas</div>
+  <div class="hdr-sep"></div>
+  <div class="hdr-by">Dounia Ryane Loumachi · Doctoral Proposal · University of Vienna 2026</div>
+  <div class="hdr-tabs">
+    <div class="tab on"  onclick="go('ant',this)"><div class="tab-n">1</div>ANT Assemblage</div>
+    <div class="tab"     onclick="go('nei',this)"><div class="tab-n">2</div>Neidich Cognitive Map</div>
+    <div class="tab"     onclick="go('cv',this)"> <div class="tab-n">3</div>Controversy Map</div>
+    <div class="tab"     onclick="go('gov',this)"><div class="tab-n">4</div>Governance Layer</div>
+  </div>
+  <div class="hdr-badge">Simulation — illustrative data only</div>
+</div>
+<div class="body">
+<div class="lft">
+  <div class="ex on" id="ex-ant">
+    <div class="ex-cap"><div class="ex-num">View 1 of 4</div><div class="ex-title">ANT Assemblage — The Heritage Network</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#A8D8D8">What is this?</div><div class="ex-blk-body">This map shows the heritage site as a <strong>living network of actants</strong> — both human and non-human. Actor-Network Theory (ANT) gives equal status to every entity that has effects: a rock-art panel, a water source, a migration route, a seasonal wind, and an elder co-researcher all appear as equivalent nodes with equal agency.</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#FFD966">Why does this matter?</div><div class="ex-blk-body">Conventional heritage law protects <strong>objects</strong>. ANT shows what is actually at stake: a <strong>network of relationships</strong>. When a panel is stolen, the loss is not just the object — it is the restructuring of every connection it sustained. A route loses its anchor. A water source becomes harder to find. A season loses its marker. <em>The void is still an actant.</em></div><div class="ex-q">Key question: What is actually destroyed when rock art is stolen?</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#F5C842">How to use this view</div><div class="ex-blk-body">Click any node in the canvas to see its relational profile, theoretical significance, and data ownership status in the right panel.</div><div class="pills" style="margin-top:8px"><span class="pill p-ant">ANT — Latour</span><span class="pill p-gua">Guattari — 3 ecologies</span><span class="pill p-par">PAR — co-production</span><span class="pill p-met">Malafouris — MET</span></div></div>
+    <div class="ex-leg"><div class="ex-leg-title">Node colour guide</div>
+      <div class="li"><div class="li-dot" style="background:rgba(138,94,8,.35);border-color:var(--go2)"></div><div class="li-text"><strong>Gold</strong> — Rock art sites (intact) and landscape actants</div></div>
+      <div class="li"><div class="li-dot" style="background:rgba(139,46,14,.35);border-color:var(--tr2)"></div><div class="li-text"><strong>Terracotta</strong> — Void sites and disrupted routes (extraction damage)</div></div>
+      <div class="li"><div class="li-dot" style="background:rgba(56,82,24,.35);border-color:var(--ms2)"></div><div class="li-text"><strong>Moss green</strong> — Intact migration routes</div></div>
+      <div class="li"><div class="li-dot" style="background:rgba(106,62,6,.35);border-color:var(--am)"></div><div class="li-text"><strong>Amber</strong> — Atmospheric and cosmological actants</div></div>
+      <div class="li"><div class="li-dot" style="background:rgba(154,120,48,.35);border-color:var(--sa)"></div><div class="li-text"><strong>Sand</strong> — Community co-researchers (hold veto authority)</div></div>
+    </div>
+  </div>
+  <div class="ex" id="ex-nei">
+    <div class="ex-cap"><div class="ex-num">View 2 of 4</div><div class="ex-title">Neidich Cognitive Map</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#FFD966">What is Neidich's cognitive mapping?</div><div class="ex-blk-body">Warren Neidich argues that under <strong>cognitive capitalism</strong>, communities' ways of knowing are progressively replaced by externally legible representations — UNESCO categories, art market valuations, tourist narratives. The community's own cognitive map is overwritten. This view makes that overwriting spatially visible as a political argument.</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#F5C842">How to read the two axes</div><div class="ex-blk-body"><strong>↕ Vertical — degree of institutional capture:</strong><br><em>Bottom = knowledge fully under community control.</em><br><em>Top = knowledge fully captured or substituted by external institutions.</em><br><br><strong>↔ Horizontal — Guattari's three ecologies:</strong><br><em>Left = Environmental (landscape, material actants).</em><br><em>Centre = Social (routes, practices, governance).</em><br><em>Right = Mental/Cognitive (cosmology, memory, meaning).</em></div><div class="ex-q">Key question: How far has each domain been captured — and can it be reclaimed?</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl">Arrow directions</div>
+      <div class="li" style="margin-top:6px"><div class="li-line dash"></div><div class="li-text"><strong style="color:var(--tr2)">Dashed upward</strong> — extraction or substitution. Cognitive capitalism moves knowledge toward institutional capture, replacing community meaning with market or institutional value.</div></div>
+      <div class="li" style="margin-top:6px"><div class="li-line solid"></div><div class="li-text"><strong style="color:var(--ms2)">Solid downward</strong> — PAR-ANT restitution. The research works to return epistemic authority to the community: reclaiming vocabulary, co-producing governance tools.</div></div>
+    </div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#A8D870">The core argument, visualised</div><div class="ex-blk-body">The <strong>void site</strong> sits top-left — fully captured by the market, removed from community control. The <strong>green arrows</strong> show where ANT-PAR works to pull knowledge back down: not by recovering the stolen panels, but by asserting community epistemic authority over what remains.</div><div class="pills" style="margin-top:8px"><span class="pill p-nei">Neidich — cognitive capitalism</span><span class="pill p-gua">Guattari — 3 ecologies</span><span class="pill p-par">PAR — restitution</span><span class="pill p-ant">ANT — knowledge networks</span></div></div>
+  </div>
+  <div class="ex" id="ex-cv">
+    <div class="ex-cap"><div class="ex-num">View 3 of 4</div><div class="ex-title">Controversy Map — The Full Theft Network</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#B83C1A">What is controversy mapping?</div><div class="ex-blk-body">Latour's controversy mapping traces every actant that makes a theft economically viable — not just the extractor, but the full downstream network: dealers, auction houses, collectors, and the legal frameworks that allow provenance to be falsified. Click the void site node to follow the chain.</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#FFD966">Why existing law is insufficient</div><div class="ex-blk-body">Prosecution currently targets the <strong>extraction point</strong>. But extraction is economically rational only because the downstream network exists. <strong>Dealers, auction houses, and collectors</strong> sustain the market — and are rarely prosecuted. Controversy mapping produces the evidence base to extend legal accountability to every node in the chain.</div><div class="ex-q">Key question: Who makes rock art theft profitable, and how can each node be held accountable?</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#A8D870">Research output</div><div class="ex-blk-body"><strong>Output 2:</strong> prosecution-ready dossiers for INTERPOL's Works of Art unit. Each dossier traces one theft from extraction site to current location, naming every actant in the chain.</div><div class="pills" style="margin-top:8px"><span class="pill p-ant">ANT — controversy mapping</span><span class="pill p-nei">Neidich — trafficking legibility</span></div></div>
+  </div>
+  <div class="ex" id="ex-gov">
+    <div class="ex-cap"><div class="ex-num">View 4 of 4</div><div class="ex-title">Governance Layer — Who Owns the Knowledge?</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#A8D870">Why a governance layer?</div><div class="ex-blk-body">Most academic research extracts knowledge from communities and processes it through frameworks the community cannot control. This governance model is derived directly from the theoretical commitments of the research — not added as ethical compliance.</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#FFD966">What makes this model different</div><div class="ex-blk-body">PAR's <strong>epistemic non-substitution</strong>: community interpretive authority is ontologically prior to the researcher's framework. When a co-researcher vetoes an interpretation, it is not feedback — it is the epistemologically primary account. ANT's symmetry applied to the researcher: her own institutional power must be made visible and accountable.</div><div class="ex-q">Key question: Who has the right to speak about a community's own knowledge?</div></div>
+    <div class="ex-blk"><div class="ex-blk-lbl" style="color:#F5C842">The veto — why it is not procedural</div><div class="ex-blk-body">A veto is not a complaint. When exercised, it becomes a <strong>primary research finding</strong> — documenting the exact point where community authority superseded the researcher's framework. It is recorded in the thesis as such.</div><div class="pills" style="margin-top:8px"><span class="pill p-par">PAR — epistemic non-substitution</span><span class="pill p-ant">ANT — researcher as actant</span></div></div>
+  </div>
+</div>
+<div class="ctr" id="ctr">
+  <canvas id="aC"></canvas>
+  <canvas id="nC" style="display:none"></canvas>
+  <div class="ov" id="gov-ov">
+    <div class="gov-h">Governance Layer — Data Sovereignty</div>
+    <div class="gov-sub">Exactly who owns each piece of research data, who can publish it, and who can withdraw it</div>
+    <div class="gov-intro">The architecture below is derived from the theoretical frameworks of this research. PAR's epistemic non-substitution means community authority is prior to the researcher's. ANT's symmetry means the researcher's own institutional power must be made transparent. Free, Prior and Informed Consent is the procedural floor; the five theoretically-derived ethical commitments are the ceiling.</div>
+    <div class="gov-veto"><div class="gov-veto-lbl">The veto mechanism — why it is not a procedure</div><div class="gov-veto-txt">When a community co-researcher rejects an interpretation, that rejection is the epistemologically primary account — not feedback to be weighed. The veto documents the moment community authority superseded the researcher's framework. It is recorded in the thesis as a primary research finding. Any protocol vetoed is revised or withdrawn without defence.</div></div>
+    <div class="gg">
+      <div class="gc c"><div class="gc-lbl">Why community-owned?</div><div class="gc-title">Full sovereignty</div><div class="gc-body">Assemblage maps, controversy dossiers, co-analysis records. Communities are knowledge producers, not data sources (PAR). Researcher holds access copies only with explicit permission; publication requires community co-authorship.</div></div>
+      <div class="gc s"><div class="gc-lbl">Why jointly held?</div><div class="gc-title">Co-authored</div><div class="gc-body">Where researcher and community readings diverge, both are published with community reading given precedence. This is epistemic non-substitution in writing — the researcher does not get the last word on community knowledge.</div></div>
+      <div class="gc r"><div class="gc-lbl">Why subject to review?</div><div class="gc-title">Researcher reflexivity</div><div class="gc-body">ANT symmetry applied to the researcher: she is an actant with power derived from European institutional affiliation. The journal makes that power visible and accountable, published alongside findings.</div></div>
+    </div>
+    <table class="gt">
+      <thead><tr><th>Data type</th><th>Who produces it</th><th>Ownership</th><th>How it can be published</th><th>Can it be withdrawn?</th></tr></thead>
+      <tbody>
+        <tr><td>Assemblage maps</td><td>Community workshops (P1)</td><td><span class="ot ot-c">Community</span></td><td>Co-authored only</td><td>Yes — any time, no reason needed</td></tr>
+        <tr><td>Controversy maps</td><td>Participatory sessions (P4)</td><td><span class="ot ot-c">Community</span></td><td>Community consent; INTERPOL use needs separate approval</td><td>Yes — any time</td></tr>
+        <tr><td>Photovoice images</td><td>Individual photographers (P3)</td><td><span class="ot ot-c">Photographer</span></td><td>Explicit release by photographer only</td><td>Yes — any time</td></tr>
+        <tr><td>Co-analysis records</td><td>Joint sessions (P2)</td><td><span class="ot ot-s">Shared</span></td><td>Sign-off required from all session participants</td><td>Yes — any time</td></tr>
+        <tr><td>Reflexivity journal</td><td>Researcher (P5)</td><td><span class="ot ot-r">Researcher</span></td><td>After community review; excerpts selected with community input</td><td>Community can request revisions</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cv-b" id="cv-b">⚠ Controversy Mode — tracing the full theft network. Click the void site.</div>
+  <div class="wm">DOCTORAL PROPOSAL SIMULATION — D. RYANE LOUMACHI 2026 — UNIVERSITY OF VIENNA</div>
+  <div class="tip" id="tip"><div class="tip-t" id="tip-t"></div><div class="tip-n" id="tip-n"></div><div class="tip-b" id="tip-b"></div></div>
+</div>
+<div class="rgt">
+  <div class="dp on" id="dp-def">
+    <div class="dp-h"><div class="dp-type">How to navigate</div><div class="dp-name" style="font-size:14px;font-family:var(--FS);font-weight:300;color:var(--dim)">Click any node in the canvas to see its full relational profile, theoretical significance, and data ownership status.</div></div>
+    <div class="ds"><div class="ds-lbl">Assemblage at a glance</div><div class="dr"><span class="dk">Actants mapped</span><span class="dv">10 of est. 18</span></div><div class="dr"><span class="dk">Void sites</span><span class="dv" style="color:var(--tr2)">1 — panels extracted</span></div><div class="dr"><span class="dk">Disrupted routes</span><span class="dv" style="color:var(--tr2)">1 of 2</span></div><div class="dr"><span class="dk">Field cycle</span><span class="dv">2 of 3</span></div><div class="dr"><span class="dk">Next community review</span><span class="dv">Month 33</span></div></div>
+    <div class="ds"><div class="ds-lbl">What "void actant" means</div><div class="dt">A void is not an absence — it is an active force. The extracted panels continue to structure the network through their absence: a route loses orientation, a season loses its marker, knowledge-transmission chains break. The void's effects are as real as the panels were. This is the central legal and ontological argument of the research.</div></div>
+  </div>
+  <div class="dp" id="dp-RA1">
+    <div class="dp-h"><div class="dp-type">Rock Art Site · Non-human actant · Intact</div><div class="dp-name">Engraving cluster</div><div class="dp-desc">Cosmological anchor, seasonal calendar, and orientation device for the northern migration corridor</div></div>
+    <div class="ds"><div class="ds-lbl">Why this is an actant, not just an object</div><div class="why"><div class="why-lbl">ANT — Generalised Symmetry (Latour)</div><div class="why-txt">This panel does not passively exist — it actively orients human behaviour, structures seasonal movement, and holds knowledge across generations. Its agency is real: remove it and every connected relationship reorganises. This is what Latour means when he says non-humans have agency equal to humans in networks.</div></div></div>
+    <div class="ds"><div class="ds-lbl">Relational connections</div><div class="rl"><div class="ri"><div class="rdot" style="background:var(--go)"></div>Orients approach to seasonal water source</div><div class="ri"><div class="rdot" style="background:var(--ms2)"></div>Anchors northern migration corridor</div><div class="ri"><div class="rdot" style="background:var(--sa)"></div>Knowledge held by elder co-researcher</div><div class="ri"><div class="rdot" style="background:var(--am)"></div>Linked to stellar navigation pattern</div></div></div>
+    <div class="ds"><div class="ds-lbl">Data ownership</div><div class="ob" style="border-color:rgba(56,82,24,.4);color:var(--ms2)">Community-owned · co-author sign-off required before publication</div><div class="dt" style="margin-top:7px">The community name for this site is withheld at their request. No external classification names are used.</div></div>
+  </div>
+  <div class="dp" id="dp-RA2">
+    <div class="dp-h"><div class="dp-type" style="color:var(--tr2)">Rock Art Site · VOID — Panels Extracted</div><div class="dp-name">Void site</div><div class="dp-desc">Panel cluster partially extracted. The voids remain as active actants — their absence restructures every connected relationship in the assemblage.</div></div>
+    <div class="ds"><div class="ds-lbl">Why the void is still an actant</div><div class="why"><div class="why-lbl">Malafouris — Material Engagement Theory</div><div class="why-txt">These panels were not symbols of knowledge — they were the cognitive infrastructure through which knowledge lived. Their removal does not leave an empty space; it destroys cognitive pathways that cannot be reconstructed by documentation alone. The theft is cognitive dispossession — not property crime.</div></div></div>
+    <div class="ds"><div class="ds-lbl">Assemblage impact</div><div class="rl"><div class="ri"><div class="rdot" style="background:var(--tr2)"></div>Southern corridor lost its orientational anchor</div><div class="ri"><div class="rdot" style="background:var(--tr2)"></div>Seasonal timing knowledge partially broken</div><div class="ri"><div class="rdot" style="background:var(--tr2)"></div>Intergenerational transmission chain weakened</div></div></div>
+    <div class="ds"><div class="ds-lbl">Controversy chain — full network in tab 3</div><div class="ch"><div class="cn" style="border-color:var(--tr2);color:var(--tr2)">Extraction from site</div><div class="ca">↓ smuggled via transit country</div><div class="cn" style="border-color:var(--go);color:var(--go)">Intermediary dealer</div><div class="ca">↓ auctioned, provenance falsified</div><div class="cn" style="border-color:var(--go2);color:var(--go2)">Auction house — Western Europe</div><div class="ca">↓ sold to private buyer</div><div class="cn" style="border-color:var(--dim2);color:var(--dim2)">Private collector — undisclosed</div></div></div>
+  </div>
+  <div class="dp" id="dp-MR2">
+    <div class="dp-h"><div class="dp-type" style="color:var(--tr2)">Migration Route · Non-human actant · Disrupted</div><div class="dp-name">Southern corridor</div><div class="dp-desc">Historically anchored by the extracted panels. Elders now report navigational uncertainty — the route's orientational logic is partially lost.</div></div>
+    <div class="ds"><div class="ds-lbl">Community testimony · Protocol 2 · cycle 1</div><div class="dt" style="border-left:2px solid var(--sa);padding-left:9px;margin-bottom:8px">"The stones told us when to turn south. Now we navigate by memory alone, and memory fades with each generation."<br><span style="font-family:var(--FM);font-size:8px;color:var(--dim2)">— Elder co-researcher · anonymised</span></div><div class="ob" style="border-color:rgba(139,46,14,.3);color:var(--tr2)">Community-owned · publication requires co-author sign-off</div></div>
+    <div class="ds"><div class="ds-lbl">Why this is not just a practical problem</div><div class="why"><div class="why-lbl">Guattari — Environmental Ecology</div><div class="why-txt">The route is an actant in the environmental ecology. Its disruption cascades into the social ecology (governance, collective decision-making) and the mental ecology (intergenerational transmission). These three are inseparable — Guattari insists on it. A legal response targeting only the object misses all three registers of harm.</div></div></div>
+  </div>
+  <div class="dp" id="dp-CR1">
+    <div class="dp-h"><div class="dp-type">Community Co-Researcher · Human actant · Veto authority</div><div class="dp-name">Elder — route knowledge</div><div class="dp-desc">Anonymised. Primary co-researcher for Protocols 1 and 2. Holds structural veto over all outputs touching northern corridor assemblage data.</div></div>
+    <div class="ds"><div class="ds-lbl">Why "co-researcher" and not "informant"</div><div class="why"><div class="why-lbl">PAR — Epistemic Non-Substitution</div><div class="why-txt">This person does not provide data for the researcher to interpret. They are a knowledge producer with interpretive authority that is ontologically prior to any framework the researcher brings. When they revise an interpretation, that revision is the epistemologically primary account — not a correction to be weighed.</div></div></div>
+    <div class="ds"><div class="ds-lbl">Veto record</div><div class="dr"><span class="dk">Vetoes exercised</span><span class="dv">1 · Protocol 2 · cycle 1</span></div><div class="dr"><span class="dk">Issue</span><span class="dv">Cosmological term misrepresented</span></div><div class="dr"><span class="dk">Outcome</span><span class="dv">New terminology co-produced</span></div><div class="dt" style="margin-top:7px">This veto is a research finding: it documents the exact limit of ANT-PAR translation and the moment community authority superseded the researcher's framework.</div></div>
+  </div>
+  <div class="dp" id="dp-fall">
+    <div class="dp-h"><div class="dp-type">Actant</div><div class="dp-name" id="fall-name"></div><div class="dp-desc">Full relational profile pending month-33 community review and co-author sign-off.</div></div>
+    <div class="ds"><div class="ds-lbl">Why it appears in the registry</div><div class="dt">In ANT, an actant does not need to be fully documented to be acknowledged. Its presence — confirmed by community co-researchers — is itself data. Documentation follows community protocols, not research convenience.</div></div>
+  </div>
+</div>
+</div>
+<div class="sbar">
+  <div class="si">View: <span id="v-lbl">ANT Assemblage</span></div>
+  <div class="si">Field cycle <span>2 of 3 · dry season</span></div>
+  <div class="si">Actants mapped <span>10 / est. 18</span></div>
+  <div class="si">Protocols active <span>P1 · P2 · P3 · P4 · P5</span></div>
+  <div class="si">Next review <span>Month 33</span></div>
+  <div class="si" style="margin-left:auto">Simulation — illustrative data only</div>
+</div>
+<script>
+const ANT_N=[
+  {id:'RA1',x:.30,y:.35,r:13,col:'#8A5E08',lbl:'Engraving\ncluster'},
+  {id:'RA2',x:.50,y:.52,r:14,col:'#8B2E0E',lbl:'VOID\nsite',isVoid:true},
+  {id:'RA3',x:.22,y:.60,r:10,col:'#8A5E08',lbl:'Painted\nscenes'},
+  {id:'WA1',x:.42,y:.25,r:10,col:'#6A3E06',lbl:'Water\nsource N'},
+  {id:'WA2',x:.15,y:.43,r:8, col:'#6A3E06',lbl:'Waterway'},
+  {id:'MR1',x:.60,y:.30,r:11,col:'#385218',lbl:'N corridor'},
+  {id:'MR2',x:.64,y:.60,r:11,col:'#8B2E0E',lbl:'S corridor\n[disrupted]',isVoid:true},
+  {id:'AT1',x:.25,y:.17,r:8, col:'#6A3E06',lbl:'Wind\ncycle'},
+  {id:'AT2',x:.13,y:.28,r:8, col:'#6A3E06',lbl:'Stellar\nnav.'},
+  {id:'CR1',x:.72,y:.38,r:10,col:'#9A7830',lbl:'Elder\n(anon.)'},
+  {id:'CR2',x:.76,y:.56,r:9, col:'#9A7830',lbl:'Photographer\n(anon.)'},
+  {id:'EX1',x:.52,y:.74,r:8, col:'#8B2E0E',lbl:'Extractors',cv:true},
+  {id:'DE1',x:.38,y:.82,r:8, col:'#8A5E08',lbl:'Dealer',cv:true},
+  {id:'AU1',x:.22,y:.78,r:8, col:'#8A5E08',lbl:'Auction\nhouse',cv:true},
+  {id:'CO1',x:.10,y:.66,r:8, col:'#6B5436',lbl:'Collector',cv:true},
+];
+const ANT_E=[
+  {a:'RA1',b:'WA1',w:1.5},{a:'RA1',b:'MR1',w:2},{a:'RA1',b:'AT1',w:1},
+  {a:'RA1',b:'CR1',w:1.5},{a:'RA1',b:'AT2',w:1},
+  {a:'RA2',b:'MR2',w:2},{a:'RA2',b:'CR2',w:1.5},
+  {a:'RA3',b:'WA2',w:1},{a:'RA3',b:'AT1',w:1},
+  {a:'WA1',b:'MR1',w:1.5},{a:'WA2',b:'MR1',w:1},
+  {a:'MR1',b:'CR1',w:1.5},{a:'MR2',b:'CR2',w:1},
+  {a:'AT1',b:'WA1',w:1},{a:'AT2',b:'WA1',w:1},{a:'CR1',b:'CR2',w:1},
+  {a:'RA2',b:'EX1',w:1.5,cv:1},{a:'EX1',b:'DE1',w:1.5,cv:1},
+  {a:'DE1',b:'AU1',w:1.5,cv:1},{a:'AU1',b:'CO1',w:1.5,cv:1},
+];
+const NEI_N=[
+  {id:'ne1',x:.47,y:.08,r:10,col:'#9A7830',lbl:'Elder\nknowledge'},
+  {id:'ne2',x:.57,y:.13,r:9, col:'#9A7830',lbl:'Photovoice\ncorpus'},
+  {id:'ne3',x:.82,y:.07,r:10,col:'#9A7830',lbl:'Oral\ncosmology'},
+  {id:'ne4',x:.92,y:.17,r:9, col:'#9A7830',lbl:'Embodied\nnavigation'},
+  {id:'ne5',x:.76,y:.19,r:9, col:'#9A7830',lbl:'Seasonal\nmemory'},
+  {id:'ne6',x:.08,y:.10,r:10,col:'#6A3E06',lbl:'Landscape\nactants'},
+  {id:'ne7',x:.20,y:.13,r:11,col:'#385218',lbl:'N corridor\n(intact)'},
+  {id:'ne8',x:.05,y:.22,r:8, col:'#6A3E06',lbl:'Wind\ncycle'},
+  {id:'ne9',x:.12,y:.40,r:12,col:'#8A5E08',lbl:'Rock art\n(intact)'},
+  {id:'ne10',x:.23,y:.38,r:10,col:'#8A5E08',lbl:'Rock art\n(painted)'},
+  {id:'ne11',x:.86,y:.40,r:9, col:'#6A3E06',lbl:'Stellar\nnavigation'},
+  {id:'ne12',x:.31,y:.66,r:11,col:'#8B2E0E',lbl:'S corridor\n[disrupted]'},
+  {id:'ne13',x:.55,y:.70,r:9, col:'#8B2E0E',lbl:'UNESCO\nclassification'},
+  {id:'ne14',x:.78,y:.67,r:8, col:'#8B2E0E',lbl:'Tourism\nnarrative'},
+  {id:'ne15',x:.11,y:.88,r:13,col:'#8B2E0E',lbl:'VOID site\n[extracted]'},
+  {id:'ne16',x:.47,y:.85,r:9, col:'#6B2808',lbl:'Art market\ncircuit'},
+  {id:'ne17',x:.84,y:.82,r:8, col:'#8B2E0E',lbl:'Heritage\nsurvey tools'},
+];
+const NEI_EX=[
+  {f:'ne9', t:'ne15',lbl:'extracted'},{f:'ne3',t:'ne13',lbl:'classified'},
+  {f:'ne7', t:'ne12',lbl:'disoriented'},{f:'ne9',t:'ne16',lbl:'trafficked'},
+  {f:'ne3', t:'ne14',lbl:'aestheticised'},{f:'ne4',t:'ne17',lbl:'surveyed'},
+];
+const NEI_RE=[
+  {f:'ne15',t:'ne9', lbl:'PAR-ANT restitution'},
+  {f:'ne13',t:'ne3', lbl:'epistemic reclaim'},
+];
+
+let mode='ant',sel=null,pt=0,W=0,H=0;
+const aC=document.getElementById('aC');
+const nC=document.getElementById('nC');
+const ax=aC.getContext('2d');
+const nx=nC.getContext('2d');
+
+function rsz(){const el=document.getElementById('ctr');W=el.clientWidth;H=el.clientHeight;aC.width=W;aC.height=H;nC.width=W;nC.height=H;}
+const px=n=>n.x*W,py=n=>n.y*H;
+
+function hit(mx,my){
+  for(let i=ANT_N.length-1;i>=0;i--){
+    const n=ANT_N[i];if(n.cv&&mode!=='cv')continue;
+    const dx=mx-px(n),dy=my-py(n);
+    if(dx*dx+dy*dy<(n.r+8)*(n.r+8))return n;
+  }return null;
+}
+
+function dANT(){
+  ax.clearRect(0,0,W,H);pt+=.016;const isCv=mode==='cv';
+  ANT_E.forEach(e=>{
+    if(e.cv&&!isCv)return;
+    const na=ANT_N.find(n=>n.id===e.a),nb=ANT_N.find(n=>n.id===e.b);
+    if(!na||!nb)return;
+    const conn=sel&&(e.a===sel.id||e.b===sel.id);
+    let a=conn ? .65 : .1;if(e.cv)a=isCv ? .5 : 0;
+    ax.beginPath();ax.moveTo(px(na),py(na));ax.lineTo(px(nb),py(nb));
+    ax.strokeStyle=e.cv?`rgba(139,46,14,${a})`:`rgba(138,94,8,${a})`;
+    ax.lineWidth=conn?e.w*2.5:e.w;ax.stroke();
+  });
+  ANT_N.forEach(n=>{
+    if(n.cv&&!isCv)return;
+    const x=px(n),y=py(n),isSel=sel && sel.id===n.id;
+    const p=isSel?Math.sin(pt*2)*3:0;
+    if(isSel){const g=ax.createRadialGradient(x,y,n.r,x,y,n.r+20+p);g.addColorStop(0,n.col+'55');g.addColorStop(1,'transparent');ax.beginPath();ax.arc(x,y,n.r+20+p,0,Math.PI*2);ax.fillStyle=g;ax.fill();}
+    if(n.isVoid){ax.beginPath();ax.arc(x,y,n.r+7,0,Math.PI*2);ax.strokeStyle='rgba(139,46,14,.22)';ax.lineWidth=1;ax.setLineDash([3,5]);ax.stroke();ax.setLineDash([]);}
+    ax.beginPath();ax.arc(x,y,n.r,0,Math.PI*2);
+    ax.fillStyle=n.col+(isSel?'DD':'28');ax.fill();
+    ax.strokeStyle=n.col+(isSel?'FF':'88');ax.lineWidth=isSel?2:1;ax.stroke();
+    ax.fillStyle=isSel?n.col:n.col+'AA';
+    ax.font=`${isSel?400:300} ${isSel?11:10}px IBM Plex Mono`;ax.textAlign='center';
+    n.lbl.split('\n').forEach((l,i)=>ax.fillText(l,x,y+n.r+13+i*11));
+  });
+}
+
+function dNEI(){
+  nx.clearRect(0,0,W,H);pt+=.016;
+  const PL=90,PR=20,PT=52,PB=52;
+  const x0=PL,x1=W-PR,y0=PT,y1=H-PB,pw=x1-x0,ph=y1-y0;
+  const eco=[
+    {xF:0,   wF:.34,lbl:'ENVIRONMENTAL ECOLOGY',     bg:'rgba(106,62,6,.04)',  bd:'rgba(160,120,60,.15)'},
+    {xF:.34, wF:.32,lbl:'SOCIAL ECOLOGY',            bg:'rgba(56,82,24,.04)',  bd:'rgba(160,120,60,.15)'},
+    {xF:.66, wF:.34,lbl:'MENTAL / COGNITIVE ECOLOGY',bg:'rgba(106,86,38,.04)', bd:'rgba(160,120,60,.15)'},
+  ];
+  eco.forEach(z=>{
+    nx.fillStyle=z.bg;nx.fillRect(x0+z.xF*pw,y0,z.wF*pw,ph);
+    if(z.xF>0){nx.strokeStyle=z.bd;nx.lineWidth=1;nx.setLineDash([4,6]);nx.beginPath();nx.moveTo(x0+z.xF*pw,y0);nx.lineTo(x0+z.xF*pw,y1);nx.stroke();nx.setLineDash([]);}
+    nx.fillStyle='rgba(108,84,48,.5)';nx.font='500 8px IBM Plex Mono';nx.textAlign='center';
+    nx.fillText(z.lbl,x0+z.xF*pw+z.wF*pw/2,y0-14);
+    nx.strokeStyle='rgba(108,84,48,.2)';nx.lineWidth=1;nx.setLineDash([]);
+    nx.beginPath();nx.moveTo(x0+z.xF*pw+4,y0-4);nx.lineTo(x0+z.xF*pw+z.wF*pw-4,y0-4);nx.stroke();
+  });
+  const bands=[
+    {yF:0,  hF:.28,col:'rgba(139,46,14,.05)', lbl:'FULLY CAPTURED — institutional / market control'},
+    {yF:.28,hF:.30,col:'rgba(138,94,8,.04)',  lbl:'CONTESTED — visible to both community and external gaze'},
+    {yF:.58,hF:.42,col:'rgba(56,82,24,.05)',  lbl:'COMMUNITY-CONTROLLED — epistemic sovereignty intact'},
+  ];
+  bands.forEach((b,i)=>{
+    nx.fillStyle=b.col;nx.fillRect(x0,y0+b.yF*ph,pw,b.hF*ph);
+    if(i>0){nx.strokeStyle='rgba(160,120,60,.18)';nx.lineWidth=1;nx.setLineDash([4,7]);nx.beginPath();nx.moveTo(x0,y0+b.yF*ph);nx.lineTo(x1,y0+b.yF*ph);nx.stroke();nx.setLineDash([]);}
+    nx.fillStyle='rgba(108,84,48,.28)';nx.font='400 8px IBM Plex Mono';nx.textAlign='right';
+    nx.fillText(b.lbl,x1-5,y0+b.yF*ph+11);
+  });
+  nx.strokeStyle='rgba(108,84,48,.35)';nx.lineWidth=1;nx.setLineDash([]);
+  nx.beginPath();nx.moveTo(x0,y0);nx.lineTo(x0,y1);nx.stroke();
+  nx.beginPath();nx.moveTo(x0,y1);nx.lineTo(x1,y1);nx.stroke();
+  nx.save();nx.translate(x0-38,y0+ph*.35);nx.rotate(-Math.PI/2);
+  nx.fillStyle='rgba(139,46,14,.55)';nx.font='400 9px IBM Plex Mono';nx.textAlign='center';
+  nx.fillText('⬆  INSTITUTIONALLY CAPTURED',0,0);nx.restore();
+  nx.save();nx.translate(x0-38,y0+ph*.78);nx.rotate(-Math.PI/2);
+  nx.fillStyle='rgba(56,82,24,.6)';nx.font='400 9px IBM Plex Mono';nx.textAlign='center';
+  nx.fillText('⬇  COMMUNITY CONTROLLED',0,0);nx.restore();
+  nx.fillStyle='rgba(108,84,48,.45)';nx.font='400 9px IBM Plex Mono';nx.textAlign='center';
+  nx.fillText("← GUATTARI'S THREE ECOLOGIES →",x0+pw/2,y1+30);
+  const gx=n=>x0+n.x*pw,gy=n=>y0+n.y*ph;
+  function arrow(fx,fy,tx,ty,fr,tr,col,dash,lbl){
+    const dx=tx-fx,dy=ty-fy,len=Math.sqrt(dx*dx+dy*dy);
+    const ux=dx/len,uy=dy/len;
+    const x1e=fx+ux*fr,y1e=fy+uy*fr,x2e=tx-ux*(tr+6),y2e=ty-uy*(tr+6);
+    nx.beginPath();nx.moveTo(x1e,y1e);nx.lineTo(x2e,y2e);
+    nx.strokeStyle=col;nx.lineWidth=dash?1.3:2;
+    if(dash)nx.setLineDash([3,6]);nx.stroke();nx.setLineDash([]);
+    const ang=Math.atan2(y2e-y1e,x2e-x1e);
+    nx.beginPath();nx.moveTo(x2e,y2e);
+    nx.lineTo(x2e-8*Math.cos(ang-.4),y2e-8*Math.sin(ang-.4));
+    nx.lineTo(x2e-8*Math.cos(ang+.4),y2e-8*Math.sin(ang+.4));
+    nx.closePath();nx.fillStyle=col;nx.fill();
+    nx.fillStyle=col;nx.font='300 8px IBM Plex Mono';nx.textAlign='center';
+    nx.fillText(lbl,(x1e+x2e)/2+14,(y1e+y2e)/2+(dash?-6:12));
+  }
+  NEI_EX.forEach(ar=>{
+    const fn=NEI_N.find(n=>n.id===ar.f),tn=NEI_N.find(n=>n.id===ar.t);
+    if(!fn||!tn)return;
+    arrow(gx(fn),gy(fn),gx(tn),gy(tn),fn.r,tn.r,'rgba(139,46,14,.45)',true,ar.lbl);
+  });
+  NEI_RE.forEach(ar=>{
+    const fn=NEI_N.find(n=>n.id===ar.f),tn=NEI_N.find(n=>n.id===ar.t);
+    if(!fn||!tn)return;
+    arrow(gx(fn),gy(fn),gx(tn),gy(tn),fn.r+4,tn.r,'rgba(56,82,24,.7)',false,ar.lbl);
+  });
+  NEI_N.forEach(n=>{
+    const x=gx(n),y=gy(n),p=Math.sin(pt*1.5+n.x*8)*.8;
+    const g=nx.createRadialGradient(x,y,0,x,y,n.r+12+p);
+    g.addColorStop(0,n.col+'55');g.addColorStop(1,'transparent');
+    nx.beginPath();nx.arc(x,y,n.r+12+p,0,Math.PI*2);nx.fillStyle=g;nx.fill();
+    nx.beginPath();nx.arc(x,y,n.r,0,Math.PI*2);
+    nx.fillStyle=n.col+'32';nx.fill();nx.strokeStyle=n.col+'BB';nx.lineWidth=1.3;nx.stroke();
+    nx.fillStyle=n.col+'CC';nx.font='300 9px IBM Plex Mono';nx.textAlign='center';
+    n.lbl.split('\n').forEach((l,i)=>nx.fillText(l,x,y+n.r+12+i*11));
+  });
+}
+
+function loop(){
+  if(mode==='ant'||mode==='cv')dANT();
+  if(mode==='nei')dNEI();
+  requestAnimationFrame(loop);
+}
+
+aC.addEventListener('mousemove',e=>{
+  if(mode==='nei'||mode==='gov')return;
+  const r=aC.getBoundingClientRect();
+  aC.style.cursor=hit(e.clientX-r.left,e.clientY-r.top)?'pointer':'default';
+});
+aC.addEventListener('click',e=>{
+  if(mode==='nei'||mode==='gov')return;
+  const r=aC.getBoundingClientRect();
+  const n=hit(e.clientX-r.left,e.clientY-r.top);
+  n?selNode(n):desel();
+});
+
+function selNode(n){
+  sel=n;
+  document.querySelectorAll('.dp').forEach(p=>p.classList.remove('on'));
+  const dp=document.getElementById('dp-'+n.id);
+  if(dp)dp.classList.add('on');
+  else{document.getElementById('dp-fall').classList.add('on');document.getElementById('fall-name').textContent=n.lbl.replace('\n',' ');}
+}
+function desel(){
+  sel=null;
+  document.querySelectorAll('.dp').forEach(p=>p.classList.remove('on'));
+  document.getElementById('dp-def').classList.add('on');
+}
+
+function go(tab,el){
+  mode=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));el.classList.add('on');
+  aC.style.display=(tab==='ant'||tab==='cv')?'block':'none';
+  nC.style.display=tab==='nei'?'block':'none';
+  document.getElementById('gov-ov').classList.toggle('on',tab==='gov');
+  document.getElementById('cv-b').classList.toggle('on',tab==='cv');
+  ['ant','nei','cv','gov'].forEach(t=>{const ex=document.getElementById('ex-'+t);if(ex)ex.classList.toggle('on',t===tab);});
+  document.getElementById('v-lbl').textContent=el.textContent.trim();
+  desel();
+}
+
+window.addEventListener('resize',()=>rsz());
+rsz();loop();
+</script>
+</body>
+</html>
