@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomadic Assemblages — Governance Research View</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F1E7;--bg2:#EDE5D0;--bg3:#E3D8C0;--ink:#1C1206;--dim:#6B5436;--dim2:#A08858;
+  --bord:#C8AE88;--tr:#8B2E0E;--tr2:#B83C1A;--go:#8A5E08;--go2:#B07C14;
+  --ms:#385218;--ms2:#527828;--am:#6A3E06;--sa:#9A7830;
+  --F:'Lora',serif;--FS:'IBM Plex Sans',sans-serif;--FM:'IBM Plex Mono',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink)}
+body{font-family:var(--FS);font-size:14px;display:flex;flex-direction:column}
+.hdr{height:52px;background:var(--ink);flex-shrink:0;display:flex;align-items:center;padding:0 18px;border-bottom:3px solid var(--tr)}
+.hdr-title{font-family:var(--F);font-size:16px;font-weight:500;color:#F5C842;margin-right:14px;white-space:nowrap}
+.hdr-sep{width:1px;height:22px;background:#2E1C08;margin:0 14px}
+.hdr-by{font-family:var(--FM);font-size:9px;color:#FFD966;letter-spacing:.07em;white-space:nowrap}
+.hdr-nav{display:flex;margin-left:auto;height:100%;gap:1px}
+.nav-link{padding:0 15px;height:100%;display:flex;align-items:center;gap:7px;font-family:var(--FM);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#5A4020;text-decoration:none;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap}
+.nav-link:hover{color:#FFD966;background:rgba(255,217,102,.08)}
+.nav-link.on{color:#F5C842;border-bottom-color:var(--tr)}
+.body{display:flex;flex:1;overflow:hidden}
+.lft{width:268px;flex-shrink:0;background:var(--ink);border-right:1px solid #2A1808;overflow-y:auto;display:flex;flex-direction:column;padding:16px}
+.lft::-webkit-scrollbar{width:3px}.lft::-webkit-scrollbar-thumb{background:#2E1C08}
+.lft-h{font-family:var(--F);font-size:14px;font-weight:500;color:#F5C842;margin-bottom:12px}
+.lft-section{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #2A1808}
+.lft-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:#C89030;margin-bottom:8px}
+.lft-text{font-size:11px;color:#E8C870;line-height:1.5;margin-bottom:8px}
+.lft-text strong{color:#FFE566;font-weight:500}
+.ctr{flex:1;position:relative;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;padding:24px}
+.ctr::-webkit-scrollbar{width:3px}.ctr::-webkit-scrollbar-thumb{background:var(--bord)}
+.ctr-scroll{flex:1;overflow-y:auto;padding-right:12px}
+.ctr-title{font-family:var(--F);font-size:28px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.ctr-subtitle{font-family:var(--FS);font-size:13px;color:var(--dim);font-style:italic;margin-bottom:20px}
+.content-block{margin-bottom:24px}
+.content-block h3{font-family:var(--F);font-size:16px;font-weight:500;color:var(--ink);margin-bottom:10px;margin-top:16px}
+.content-block p{font-size:13px;line-height:1.65;color:var(--dim);margin-bottom:10px}
+.content-block strong{color:var(--ink);font-weight:500}
+.gov-box{background:rgba(56,82,24,.05);border-left:3px solid var(--ms2);padding:12px 14px;margin:12px 0;font-size:12px;line-height:1.6}
+.gov-box strong{color:var(--ms2)}
+.commitment-box{background:var(--bg2);border:1px solid var(--bord);padding:12px 14px;margin:12px 0;border-left:3px solid var(--go2)}
+.commitment-box h4{font-family:var(--F);font-size:13px;color:var(--ink);margin-bottom:6px}
+.commitment-box p{font-size:12px;color:var(--dim);line-height:1.5;margin:4px 0}
+.veto-explain{background:rgba(139,46,14,.08);border:1px solid rgba(139,46,14,.3);padding:12px 14px;margin:12px 0}
+.veto-explain strong{color:var(--tr2)}
+.data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11px}
+.data-table thead{background:var(--bg2);border-bottom:1px solid var(--bord)}
+.data-table th{padding:8px 10px;text-align:left;font-family:var(--FM);letter-spacing:.06em;color:var(--dim2);font-weight:500}
+.data-table td{padding:8px 10px;border-bottom:1px solid rgba(200,174,136,.4)}
+.data-table tr:nth-child(even){background:rgba(232,200,112,.06)}
+.rgt{width:256px;flex-shrink:0;background:var(--bg2);border-left:1px solid var(--bord);display:flex;flex-direction:column;overflow:hidden;padding:14px}
+.rgt-h{font-family:var(--F);font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px}
+.rgt-section{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--bord)}
+.rgt-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:6px}
+.rgt-body{font-size:11px;color:var(--dim);line-height:1.5}
+.rgt-body strong{color:var(--ink);font-weight:500}
+.btn-group{display:flex;gap:6px;margin-top:12px}
+.btn{padding:6px 10px;background:var(--ink);color:#F5C842;border:none;font-family:var(--FM);font-size:9px;letter-spacing:.08em;cursor:pointer;text-transform:uppercase;transition:all .18s;border-left:2px solid var(--tr)}
+.btn:hover{background:var(--tr2);color:white}
+.sbar{height:25px;flex-shrink:0;background:var(--bg3);border-top:1px solid var(--bord);display:flex;align-items:center;padding:0 14px;gap:18px;font-family:var(--FM);font-size:8px;letter-spacing:.07em;color:var(--dim2)}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-title">Nomadic Assemblage Atlas</div>
+  <div class="hdr-sep"></div>
+  <div class="hdr-by">Research Proposal · Paris Panthéon-Sorbonne Master's · 2025</div>
+  <div class="hdr-nav">
+    <a href="research-ant-view.html" class="nav-link">ANT View</a>
+    <a href="research-neidich-view.html" class="nav-link">Neidich View</a>
+    <a href="research-controversy-view.html" class="nav-link">Controversy</a>
+    <a href="research-governance-view.html" class="nav-link on">Governance</a>
+    <a href="atlas.html" class="nav-link">Interactive Atlas</a>
+  </div>
+</div>
+<div class="body">
+<div class="lft">
+  <div class="lft-h">Governance Architecture</div>
+  <div class="lft-section">
+    <div class="lft-label">Core Principle</div>
+    <div class="lft-text">Ethical commitments are <strong>theoretically derived, not procedurally imposed</strong>. They emerge directly from the research's theoretical frameworks — ANT, PAR, Guattari, Neidich — not from compliance templates.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Data Sovereignty</div>
+    <div class="lft-text">Community assemblage maps, controversy dossiers, and photovoice remain in community ownership. Researchers hold access copies only with explicit permission.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">The Veto Mechanism</div>
+    <div class="lft-text">When a community co-researcher rejects an interpretation, that rejection is the <strong>epistemologically primary account</strong> — not feedback. It is recorded as a primary research finding.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Accountability</div>
+    <div class="lft-text">The researcher is herself an actant. Her power must be made transparent and accountable through the reflexivity journal. Community review gates occur at months 18 and 33.</div>
+  </div>
+</div>
+
+<div class="ctr">
+  <div class="ctr-title">Governance Layer — Who Owns the Knowledge?</div>
+  <div class="ctr-subtitle">Data sovereignty, community veto authority, and researcher accountability as theoretical commitments</div>
+  
+  <div class="ctr-scroll">
+    <div class="content-block">
+      <h3>Why a Governance Layer Exists</h3>
+      <p>Most academic research extracts knowledge from communities and processes it through frameworks the community cannot control. This research inverts that relationship through four structural commitments derived directly from its theoretical frameworks—not added as ethical compliance.</p>
+
+      <div class="gov-box">
+        <p><strong>The governing principle:</strong> Community epistemic authority is ontologically prior to the researcher's framework. When community and researcher readings diverge, the community reading is epistemologically primary.</p>
+      </div>
+
+      <p>This is not procedural courtesy. It is a theoretical commitment grounded in PAR's epistemic non-substitution, ANT's symmetry applied reflexively, and Guattari's insistence on more-than-human entanglement.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Four Theoretically-Derived Ethical Commitments</h3>
+
+      <div class="commitment-box">
+        <h4>1. ANT Symmetry Applied to the Researcher</h4>
+        <p>The researcher is herself an actant in the heritage assemblage she studies. Her institutional affiliation, analytical frameworks, and publications intervene in the network and reshape the community's relationship to UNESCO and INTERPOL regardless of intent.</p>
+        <p><strong>Commitment:</strong> Protocol 5 (Reflexivity Journal) is not reflective practice—it is the instrument through which ANT's symmetry is applied to the researcher herself. The journal's publication is the methodological corollary of this commitment.</p>
+      </div>
+
+      <div class="commitment-box">
+        <h4>2. PAR's Epistemic Non-Substitution</h4>
+        <p>The community's interpretive authority over its own knowledge is ontologically prior to the researcher's analytical framework. When a co-researcher disputes an interpretation, that dispute is not feedback to weigh—it is the epistemologically primary account.</p>
+        <p><strong>Commitment:</strong> The thesis presents both readings where they diverge, with the community's reading given precedence, and positions the divergence as a methodological problem to examine rather than an error to correct.</p>
+      </div>
+
+      <div class="commitment-box">
+        <h4>3. Neidich's Representational Non-Extraction</h4>
+        <p>Translating nomadic knowledge into ANT-PAR vocabulary for European academic circulation risks performing the same epistemic substitution the research critiques—replacing internally meaningful practices with externally legible representations.</p>
+        <p><strong>Commitment:</strong> Co-authorship is the structural response. Community members must author accounts of their own practices, not merely validate the researcher's version. Knowledge translation happens collaboratively, not unidirectionally.</p>
+      </div>
+
+      <div class="commitment-box">
+        <h4>4. Guattari's More-Than-Human Responsibility</h4>
+        <p>If landscape features, animals, and atmospheric systems are genuine actants in the heritage assemblage, the research's obligations extend beyond its human participants to those non-human entities.</p>
+        <p><strong>Commitment:</strong> In Protocol 3 (Photovoice), photographing the voids left by stolen panels is an act of witnessing harm to the non-human components of the assemblage, not only to its human members. This witnessing is treated as evidence.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>The Veto: Why It Is Not Procedural</h3>
+
+      <div class="veto-explain">
+        <p><strong>Standard practice:</strong> Research subjects provide feedback. The researcher weighs it against other data and decides whether to incorporate the criticism.</p>
+        <p><strong>This research:</strong> When a co-researcher exercises veto authority, they are not providing feedback. They are asserting epistemic primacy. The veto is binding and becomes a primary research finding.</p>
+      </div>
+
+      <p><strong>What happens when a protocol is vetoed:</strong></p>
+      <p>1. The protocol is revised or withdrawn without defence or negotiation<br>
+      2. The veto record is documented in the thesis as evidence of community authority asserting itself<br>
+      3. The fact and reason for veto is treated as a methodological discovery—a moment where the ANT-PAR translation reached its limits<br>
+      4. Any modification is re-presented to the co-researcher for re-approval</p>
+
+      <p><strong>To safeguard academic feasibility:</strong> The five protocols operate modularly. Should any single protocol be completely withdrawn, the remaining four are structurally calibrated to yield a sufficiently robust evidentiary base for a defensible thesis. But community authority is never subordinated to academic convenience.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Data Ownership & Publication Rights</h3>
+
+      <p>Each data type has a clear ownership structure and publication pathway:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Who Produces</th>
+            <th>Ownership</th>
+            <th>Publication Rules</th>
+            <th>Withdrawal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Assemblage Maps</strong></td>
+            <td>Community workshops (P1)</td>
+            <td>Community</td>
+            <td>Co-authored only</td>
+            <td>Yes — any time, no reason needed</td>
+          </tr>
+          <tr>
+            <td><strong>Controversy Maps</strong></td>
+            <td>Participatory sessions (P4)</td>
+            <td>Community</td>
+            <td>Community consent; INTERPOL use needs separate approval</td>
+            <td>Yes — any time</td>
+          </tr>
+          <tr>
+            <td><strong>Photovoice Images</strong></td>
+            <td>Individual photographers (P3)</td>
+            <td>Photographer</td>
+            <td>Explicit release by photographer only</td>
+            <td>Yes — any time</td>
+          </tr>
+          <tr>
+            <td><strong>Co-analysis Records</strong></td>
+            <td>Joint sessions (P2)</td>
+            <td>Shared</td>
+            <td>Sign-off required from all session participants</td>
+            <td>Yes — any time</td>
+          </tr>
+          <tr>
+            <td><strong>Reflexivity Journal</strong></td>
+            <td>Researcher (P5)</td>
+            <td>Researcher</td>
+            <td>After community review; excerpts selected with community input</td>
+            <td>Community can request revisions</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Critical distinction:</strong> Data storage, access, and withdrawal are not permissions granted to a compliant researcher. They are rights maintained by data producers.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Community Review Gates: Structural Veto Points</h3>
+
+      <p>The research includes two mandatory community review gates where the full corpus is returned to co-researchers:</p>
+
+      <p><strong>Month 18 (Mid-cycle review):</strong> After first full seasonal cycle (Phase 2), all data collected to date is returned to community co-researchers. A structural veto mechanism operates: any protocol judged epistemically violent is revised or withdrawn. This review is recorded as a primary research document.</p>
+
+      <p><strong>Month 33 (Final community validation):</strong> Before writing phase begins, the complete assembled analysis—all protocols refined across three cycles—is reviewed. Community co-authors sign off on final assemblage maps and governance model. Any divergent interpretations are documented with community reading given precedence. This gate determines whether the researcher may proceed to thesis writing.</p>
+
+      <p><strong>Function:</strong> These are not progress check-ins. They are structural moments where communities reassert authority and the researcher is accountable to that authority, not vice versa.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Why This Governance Model Is Distinct</h3>
+
+      <p><strong>From conventional ethical review:</strong> Standard IRB/ethics processes provide procedural guardrails. This governance model is <em>theoretically constitutive</em> of the research. Community authority and researcher accountability are not external constraints—they are the research's central questions and methods.</p>
+
+      <p><strong>From participatory research norms:</strong> Many PAR projects consult communities and claim co-authorship. This model makes community authority legally binding. Publication cannot occur without community sign-off. Withdrawal rights are absolute. Divergent interpretations are published with community reading given precedence.</p>
+
+      <p><strong>From community-based heritage work:</strong> Such work often frames community input as valuable supplement to institutional expertise. This model inverts that: institutional expertise is subordinated to community epistemic authority. Where they diverge, the community reading is epistemologically primary.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Transferability: Governance Architecture Across Contexts</h3>
+
+      <p>The governance model is designed as a transferable template. What transfers:</p>
+
+      <p><strong>• The modular protocol structure</strong> — five protocols that can be adapted to different nomadic contexts<br>
+      <strong>• The veto mechanism as a research method</strong> — veto records become primary data in any application<br>
+      <strong>• The data ownership categories</strong> — who owns what and under what publication rules<br>
+      <strong>• The community review gates</strong> — months 18 and 33 as structural checkpoints</p>
+
+      <p><strong>What must be co-designed:</strong> The specific veto protocols, the timeline that fits local seasonal rhythms, the jurisdiction-specific publication requirements, the forms of co-authorship appropriate to each context.</p>
+
+      <p>Each nomadic community negotiates its own governance arrangement from Phase 1 onward. The architecture is not imposed—it is adapted.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Policy Implications: Extending Governance to Heritage Institutions</h3>
+
+      <p>This research produces not only academic outputs but a decolonial governance model applicable to UNESCO, international cultural heritage frameworks, and repatriation processes:</p>
+
+      <p><strong>1. Relational cultural property:</strong> Extend juridical standing to the heritage assemblage as a whole, not only extracted objects. This transforms repatriation proceedings under UNESCO 1970 and UNIDROIT 1995 conventions.</p>
+
+      <p><strong>2. Epistemic evidence as a legal category:</strong> Community testimony, assemblage maps, and void site documentation become admissible evidence without written documentation, incorporating Indigenous knowledge systems into legal proceedings.</p>
+
+      <p><strong>3. UNESCO Outstanding Universal Value criteria amendments:</strong> Modify criteria to recognize nomadic and mobile heritage assemblages, not only fixed sites. This enables protection of heritage-in-motion before extraction occurs.</p>
+
+      <p><strong>The governance layer demonstrates:</strong> Decolonial methodology is not a constraint on research rigor. It generates more robust, more politically consequential, more theoretically sophisticated scholarship.</p>
+    </div>
+  </div>
+</div>
+
+<div class="rgt">
+  <div class="rgt-h">Governance Architecture</div>
+  
+  <div class="rgt-section">
+    <div class="rgt-label">Foundation</div>
+    <div class="rgt-body">Theoretically derived commitments grounded in ANT, PAR, Guattari, and Neidich — not procedural compliance.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Core Mechanism</div>
+    <div class="rgt-body">Community veto authority. When exercised, veto is binding and becomes primary research data.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Data Ownership</div>
+    <div class="rgt-body">Assemblage maps: Community. Controversy maps: Community. Photovoice: Photographer. Co-analysis: Shared. Reflexivity: Researcher (with community review).</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Publication Rights</div>
+    <div class="rgt-body">Community-owned data requires co-author sign-off. Withdrawal possible at any point. Divergent readings published with community precedence.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Review Gates</div>
+    <div class="rgt-body">Month 18: Structural veto checkpoint. Month 33: Final community validation before thesis writing.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Researcher Accountability</div>
+    <div class="rgt-body">Protocol 5 (Reflexivity Journal): Makes researcher's own agency and power visible and accountable. Community reviews journal excerpts before publication.</div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn" onclick="window.history.back()">Back</button>
+    <button class="btn" onclick="window.location.href='atlas.html'">View Atlas</button>
+  </div>
+</div>
+</div>
+
+<div class="sbar">
+  <span>View: Governance Architecture — Data Sovereignty & Community Authority</span>
+  <span>Protocols: 5 modular research activities with veto authority at each stage</span>
+  <span>Review gates: Month 18 & Month 33 (structural checkpoints)</span>
+  <span style="margin-left:auto">Simulation — illustrative data only</span>
+</div>
+
+</body>
+</html>
