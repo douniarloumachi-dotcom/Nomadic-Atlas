@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomadic Assemblages: Decolonial Methodology for Rock Art Heritage — Dounia Ryane Loumachi</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F1E7;--bg2:#EDE5D0;--bg3:#E3D8C0;--ink:#1C1206;--dim:#6B5436;--dim2:#A08858;
+  --bord:#C8AE88;--tr:#8B2E0E;--tr2:#B83C1A;--go:#8A5E08;--go2:#B07C14;
+  --ms:#385218;--ms2:#527828;--am:#6A3E06;--sa:#9A7830;
+  --F:'Lora',serif;--FS:'IBM Plex Sans',sans-serif;--FM:'IBM Plex Mono',monospace;
+}
+html,body{width:100%;height:100%;background:var(--bg);color:var(--ink);font-family:var(--FS)}
+body{margin:0;padding:0;line-height:1.6}
+a{color:var(--tr2);text-decoration:none;border-bottom:1px solid var(--tr2)}
+a:hover{color:var(--tr);background:rgba(139,46,14,.08)}
+.container{max-width:1000px;margin:0 auto;padding:40px 30px}
+.hdr-main{border-bottom:3px solid var(--tr);padding-bottom:24px;margin-bottom:32px}
+.title{font-family:var(--F);font-size:42px;font-weight:600;margin-bottom:8px;color:var(--ink)}
+.subtitle{font-family:var(--FS);font-size:18px;color:var(--dim);font-style:italic;margin-bottom:16px}
+.meta{font-family:var(--FM);font-size:11px;letter-spacing:.08em;color:var(--dim2);text-transform:uppercase;margin-bottom:4px}
+.author{font-family:var(--FS);font-size:14px;margin:8px 0}
+
+.section{margin-bottom:48px}
+.section-h{font-family:var(--F);font-size:28px;font-weight:500;margin-bottom:16px;color:var(--ink);border-left:4px solid var(--go);padding-left:16px}
+.section-h2{font-family:var(--F);font-size:20px;font-weight:500;margin:24px 0 12px;color:var(--ink)}
+
+.intro-box{background:rgba(139,46,14,.05);border-left:3px solid var(--tr);padding:16px 18px;margin:18px 0;font-size:14px;line-height:1.7}
+.intro-box strong{color:var(--tr2);font-weight:500}
+
+.problem{background:rgba(138,94,8,.04);border:1px solid rgba(138,94,8,.25);padding:14px 16px;margin:16px 0;font-size:13px;line-height:1.65}
+.problem strong{color:var(--go2)}
+
+.framework-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.fw-card{background:var(--bg2);border:1px solid var(--bord);padding:16px;border-top:3px solid var(--go)}
+.fw-card.ant{border-top-color:#8A5E08}
+.fw-card.par{border-top-color:#385218}
+.fw-card.nei{border-top-color:#6A3E06}
+.fw-card.gua{border-top-color:#9A7830}
+.fw-title{font-family:var(--F);font-size:15px;font-weight:500;margin-bottom:8px;color:var(--ink)}
+.fw-body{font-size:13px;line-height:1.6;color:var(--dim)}
+
+.phase-timeline{margin:20px 0}
+.phase-item{margin-bottom:20px;padding-left:20px;border-left:2px solid var(--bord);position:relative}
+.phase-item::before{content:'';position:absolute;left:-7px;top:0;width:12px;height:12px;border-radius:50%;background:var(--go2);border:2px solid var(--bg)}
+.phase-num{font-family:var(--FM);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--go2);margin-bottom:4px}
+.phase-title{font-family:var(--F);font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px}
+.phase-desc{font-size:13px;color:var(--dim);line-height:1.6;margin-bottom:8px}
+.phase-deliverables{font-size:12px;color:var(--dim2);font-style:italic;margin-top:8px;padding-left:12px;border-left:2px solid var(--dim2)}
+
+.protocol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.protocol-card{background:var(--bg3);border:1px solid var(--bord);padding:14px;font-size:12px;line-height:1.5}
+.protocol-card strong{display:block;color:var(--ink);margin-bottom:6px;font-size:13px}
+.protocol-card em{color:var(--dim2);display:block;margin-top:4px;font-size:11px}
+
+.output-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.output-card{background:rgba(56,82,24,.05);border:1px solid rgba(56,82,24,.3);padding:16px}
+.output-card h4{font-family:var(--F);font-size:14px;color:var(--ms2);margin-bottom:8px}
+.output-card p{font-size:12px;color:var(--dim);line-height:1.6}
+
+.ethics-box{background:rgba(106,62,6,.04);border:1px solid rgba(106,62,6,.2);padding:16px;margin:18px 0}
+.ethics-box h4{font-family:var(--FS);font-size:12px;color:var(--am);font-weight:500;text-transform:uppercase;margin-bottom:8px}
+.ethics-box p{font-size:13px;color:var(--dim);line-height:1.6;margin-bottom:10px}
+.ethics-box p:last-child{margin-bottom:0}
+
+.cta-box{background:var(--ink);color:#F5C842;padding:20px;margin:28px 0;border-left:3px solid var(--tr)}
+.cta-box a{color:#FFE566;border-bottom-color:#FFE566}
+.cta-box a:hover{background:rgba(255,230,102,.1)}
+
+.quote{font-family:var(--F);font-size:16px;font-style:italic;color:var(--dim);margin:24px 0;padding:16px 20px;border-left:3px solid var(--tr2);background:rgba(184,60,26,.04)}
+
+.research-context{font-size:13px;line-height:1.7;background:var(--bg2);padding:16px;margin:16px 0;border:1px solid var(--bord)}
+
+.field-map{background:var(--bg2);padding:14px 16px;margin:16px 0;border-left:3px solid var(--go2);font-size:13px}
+.field-map strong{color:var(--go2)}
+
+.footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--bord);font-size:12px;color:var(--dim2);text-align:center}
+
+@media(max-width:768px){
+  .framework-grid,.protocol-grid,.output-grid{grid-template-columns:1fr}
+  .title{font-size:32px}
+  .section-h{font-size:22px}
+}
+
+.atlas-link{display:inline-block;background:var(--go2);color:white;padding:12px 18px;margin:16px 0;font-family:var(--FM);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:none;text-decoration:none;cursor:pointer;border-left:3px solid var(--go)}
+.atlas-link:hover{background:var(--go);box-shadow:0 2px 8px rgba(138,94,8,.3)}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hdr-main">
+  <div class="meta">Research Proposal · Master's Programme</div>
+  <h1 class="title">Nomadic Assemblages</h1>
+  <p class="subtitle">Towards a Decolonial Methodology for Combating Rock Art Theft in Nomadic Societies</p>
+  <p class="subtitle">An Actor-Network Theory and Participatory Action Research Framework</p>
+  <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--bord)">
+    <div class="author"><strong>Candidate:</strong> Dounia Ryane Loumachi</div>
+    <div class="author"><strong>Institution:</strong> Paris Panthéon-Sorbonne</div>
+    <div class="author"><strong>Field Region:</strong> Algerian Sahara & Transborder Nomadic Territories</div>
+    <div class="author"><strong>Supervisor:</strong> [Department of Social and Cultural Anthropology]</div>
+  </div>
+</div>
+
+<!-- RESEARCH PROBLEM -->
+<div class="section">
+  <h2 class="section-h">The Problem: Cognitive Dispossession</h2>
+  
+  <div class="intro-box">
+    The theft of Neolithic engravings and paintings from nomadic landscapes is not merely a property crime. When inscribed panels are removed from the assemblages in which they function as cosmological anchors, orientation markers, and intergenerational memory devices, the cognitive architectures they sustain begin to dissolve irreversibly.
+  </div>
+
+  <div class="problem">
+    <strong>Why existing frameworks fail:</strong> Conventional heritage law protects objects. International frameworks (UNESCO 1970 Convention, UNIDROIT 1995) address individual artifacts. But rock art theft operates across three simultaneous registers of harm:<br>
+    • <strong>Environmental:</strong> landscape features lose their relational anchor<br>
+    • <strong>Social:</strong> governance and decision-making structures fragment<br>
+    • <strong>Mental/Cognitive:</strong> intergenerational knowledge transmission chains break
+  </div>
+
+  <h3 class="section-h2">Theoretical Grounding</h3>
+  <p style="margin:12px 0;font-size:13px">Following Malafouris's <strong>Material Engagement Theory</strong>, cognition is genuinely distributed across bodies, tools, and environments. The rock art panels are not symbols of knowledge—they are the cognitive infrastructure through which knowledge lives. Their removal constitutes cognitive dispossession, not only cultural loss.</p>
+
+  <p style="margin:12px 0;font-size:13px">Neidich's concept of <strong>cognitive capitalism</strong> names the epistemic mechanism: external classification of nomadic practices within UNESCO or tourism frameworks gradually substitutes externally legible representations for internally meaningful ones, reorganizing communities' relationship to their own knowledge <em>before physical theft occurs</em>.</p>
+</div>
+
+<!-- THEORETICAL FRAMEWORKS -->
+<div class="section">
+  <h2 class="section-h">Theoretical Architecture: Four Frameworks in Hybrid Form</h2>
+  
+  <p style="margin-bottom:16px;font-size:13px">No single framework is sufficient. This research operates through systematic hybridization:</p>
+
+  <div class="framework-grid">
+    <div class="fw-card ant">
+      <div class="fw-title">Actor-Network Theory (Latour, Callon, Law)</div>
+      <div class="fw-body"><strong>Contribution:</strong> Generalised symmetry — rock art panels, gueltas, migration routes, and atmospheric patterns are actants whose removal restructures the entire heritage network.<br><br><strong>Limitation:</strong> Descriptive; maps without committing to transformation.</div>
+    </div>
+    <div class="fw-card par">
+      <div class="fw-title">Participatory Action Research (Fals-Borda, Smith)</div>
+      <div class="fw-body"><strong>Contribution:</strong> Epistemic sovereignty—community members become co-researchers with veto power over research directions and outputs.<br><br><strong>Limitation:</strong> Anthropocentric; lacks tools for non-human actants central to nomadic ontologies.</div>
+    </div>
+    <div class="fw-card gua">
+      <div class="fw-title">Guattari's Ecosophy (Three Ecologies)</div>
+      <div class="fw-body"><strong>Contribution:</strong> Environmental, social, and mental ecologies are mutually entangled—responses addressing any single register will fail.<br><br><strong>Limitation:</strong> Explanatory framework; needs operational methodological translation.</div>
+    </div>
+    <div class="fw-card nei">
+      <div class="fw-title">Neidich's Cognitive Mapping</div>
+      <div class="fw-body"><strong>Contribution:</strong> Renders the human-and-non-human assemblage politically legible; translates community knowledge into documents deployable in UNESCO negotiations and repatriation claims.<br><br><strong>Limitation:</strong> Lacks participatory grounding.</div>
+    </div>
+  </div>
+
+  <div class="quote">
+    The research's core contribution is the systematic hybridisation of PAR and ANT: PAR provides the transformative methodology; ANT's symmetry extends it to non-human actants on community-defined terms.
+  </div>
+</div>
+
+<!-- RESEARCH QUESTIONS -->
+<div class="section">
+  <h2 class="section-h">Central Research Questions</h2>
+  
+  <p style="margin-bottom:12px;font-size:13px;font-weight:500">Central Question:</p>
+  <p style="margin:12px 0;font-size:13px;font-style:italic">How can ANT and PAR be hybridised to create a decolonial methodology for combating rock art theft in nomadic societies, one that recognises non-human agency and community epistemic sovereignty as the basis for protective governance, and is transferable across nomadic contexts globally?</p>
+
+  <div style="margin:16px 0;padding:12px 16px;background:var(--bg3);border-left:2px solid var(--dim2)">
+    <p style="font-size:12px;margin-bottom:8px"><strong>Q1:</strong> What epistemological tensions exist between ANT's descriptive symmetry and PAR's transformative commitments, and how can these be resolved while respecting Global South ontological autonomy?</p>
+    <p style="font-size:12px;margin-bottom:8px"><strong>Q2:</strong> How do nomadic populations conceptualise heritage relationships with non-human actants, and how do these practices challenge Western conservation frameworks?</p>
+    <p style="font-size:12px;margin-bottom:8px"><strong>Q3:</strong> In what ways does rock art theft constitute cognitive dispossession, and how can PAR methodologies grounded in MET make this visible and actionable in legal and governance negotiations?</p>
+    <p style="font-size:12px;margin-bottom:8px"><strong>Q4:</strong> What specific protocols enable communities to represent heritage assemblage agency in negotiations with state institutions and international bodies without epistemic violence?</p>
+    <p style="font-size:12px"><strong>Q5:</strong> How can these protocols function as transferable methodological engines across diverse nomadic contexts without replicating universalist extraction?</p>
+  </div>
+</div>
+
+<!-- FIELD SITE -->
+<div class="section">
+  <h2 class="section-h">Field Site & Knowledge Access</h2>
+  
+  <div class="field-map">
+    <strong>Primary Region:</strong> Algerian Sahara and its transborder extensions, home to Tuareg and associated nomadic communities whose territories span Algeria, Mali, Niger, and Libya. Specific field sites include the <strong>Tassili n'Ajjer</strong> community network.<br><br>
+    <strong>Access:</strong> The researcher holds validated personal and professional access to these communities established prior to and independent of this project, ensuring the research begins from genuine relational trust. Specific field sites are negotiated with participating communities, not predetermined.
+  </div>
+
+  <h3 class="section-h2">Why This Context</h3>
+  <p style="font-size:13px;margin:12px 0">The Saharan context is a methodological entry point, not a limiting frame. The framework is designed from the outset as a translation engine applicable across nomadic heritage contexts globally—from the Arctic to the Andes, wherever sedentarist epistemology has rendered mobile heritage ungovernable.</p>
+
+  <h3 class="section-h2">The Knowledge Gap</h3>
+  <p style="font-size:13px;margin:12px 0">No systematic methodology currently exists for participatory heritage governance in mobile societies that simultaneously:</p>
+  <div style="margin:12px 0;padding:0 16px;font-size:13px">
+    <p><strong>1. Recognises non-human agency</strong> on community-defined terms</p>
+    <p><strong>2. Guarantees epistemic sovereignty</strong> so that indigenous systems drive rather than supplement research</p>
+    <p><strong>3. Produces transferable tools</strong> without universalist extraction</p>
+  </div>
+</div>
+
+<!-- METHODOLOGY -->
+<div class="section">
+  <h2 class="section-h">Methodology: ANT-PAR Operationalized</h2>
+
+  <h3 class="section-h2">Epistemological Position</h3>
+  <p style="font-size:13px;margin:12px 0">This research operates within <strong>decolonial constructivism</strong>: all knowledge is situated and partial; indigenous knowledge systems are autonomous epistemologies; research is always a political intervention.</p>
+  
+  <p style="font-size:13px;margin:12px 0">ANT-PAR is the minimum adequate response because it simultaneously achieves community epistemic sovereignty (PAR), non-human actant recognition on community terms (ANT), and translation of assembled knowledge into legally and politically actionable documents (Neidich's mapping).</p>
+
+  <h3 class="section-h2">Research Phasing: Four Phases Across Nomadic Seasonal Rhythms</h3>
+  <p style="font-size:12px;color:var(--dim);margin-bottom:16px">The phases are epistemologically warranted: ANT-PAR requires three complete seasonal cycles of engagement because the actants under study only reveal their relational logic diachronically. Three cycles are the minimum needed to distinguish what is structurally stable in an assemblage from what is seasonally variable.</p>
+
+  <div class="phase-timeline">
+    <div class="phase-item">
+      <div class="phase-num">Phase 1</div>
+      <div class="phase-title">Preparation & Community Co-Design</div>
+      <div class="phase-desc">Archival review of rock art theft cases and heritage law. Extended community visits to co-design protocols and negotiate veto mechanisms. Ethics clearance. Identification of second nomadic context for Phase 4 pilot.</div>
+      <div class="phase-deliverables"><strong>Deliverables:</strong> Signed co-research agreements. Preliminary actant list. Ethics clearance.</div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-num">Phase 2</div>
+      <div class="phase-title">Immersive Fieldwork — First Full Seasonal Cycle</div>
+      <div class="phase-desc">Iterative implementation of all five protocols structured around pastoral movements. Community review: full corpus returned to co-researchers for a structural veto mechanism. Any protocol judged epistemically violent is revised or withdrawn; this review is recorded as a primary research document.</div>
+      <div class="phase-deliverables"><strong>Deliverables:</strong> Assemblage maps. Photovoice dossiers. Controversy maps (2–3 cases). Reflexivity journal. Veto record with documented modifications.</div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-num">Phase 3</div>
+      <div class="phase-title">Extended Fieldwork — Second & Third Seasonal Cycles</div>
+      <div class="phase-desc">Two further complete seasonal cycles deepening and cross-checking Phase 2 data. Refined protocols tested for epistemological resilience. Controversy mapping extended to 2–3 additional theft incidents. Intensive collaborative analysis with community co-researchers; co-drafted atlas and dossier sections. Month-33 review: final community validation before writing phase.</div>
+      <div class="phase-deliverables"><strong>Deliverables:</strong> Full field corpus (3 cycles). Co-drafted atlas. Controversy dossiers (4–5 cases). Co-produced analytical notes. Month-33 sign-off record.</div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-num">Phase 4</div>
+      <div class="phase-title">Analysis, Co-Writing, Pilot Transfer & Dissemination</div>
+      <div class="phase-desc">Final collaborative analysis with community co-authors; community sign-off on all publications; divergent interpretations presented with community reading given precedence. Drafting of governance model and legal policy documents. Pilot application of ANT-PAR engine in second nomadic context, documenting what transfers and what does not.</div>
+      <div class="phase-deliverables"><strong>Deliverables:</strong> Final atlas (publication-ready). Prosecution-ready controversy dossiers. Open-access ANT-PAR toolkit. Decolonial governance model. Pilot transfer report.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH PROTOCOLS -->
+<div class="section">
+  <h2 class="section-h">The Five Research Protocols</h2>
+  <p style="font-size:13px;margin-bottom:16px">The ANT-PAR hybrid is operationalised through five protocols, each targeting a specific epistemological gap. Together they constitute the community-controlled evidence base. No protocol is applied once: all five run iteratively across field phases.</p>
+
+  <div class="protocol-grid">
+    <div class="protocol-card">
+      <strong>P1: Participatory Assemblage Mapping</strong>
+      <div>Communities map all actants through oral narrative, drawing, photography, and embodied performance. Non-literate participation fully enabled.</div>
+      <em>Targets: Q2, Q4</em>
+    </div>
+    <div class="protocol-card">
+      <strong>P2: Translational Co-Analysis Interviews</strong>
+      <div>Conducted in participants' chosen language. Collaborative analysis occurs within the session; participants direct interpretation. Untranslatable concepts generate new terminology.</div>
+      <em>Targets: Q1, Q2</em>
+    </div>
+    <div class="protocol-card">
+      <strong>P3: Socio-Material Photovoice</strong>
+      <div>Participants photograph any actant relevant to the assemblage including voids left by stolen panels. Group discussions trace how each actant's agency changes after theft.</div>
+      <em>Targets: Q3, Q4</em>
+    </div>
+    <div class="protocol-card">
+      <strong>P4: Controversy Mapping & Collective Intervention</strong>
+      <div>Maps trace every actant in the theft network: extractors, dealers, auction houses, collectors, and the landscape features disoriented by theft.</div>
+      <em>Targets: Q4</em>
+    </div>
+    <div class="protocol-card">
+      <strong>P5: Researcher Hybrid Reflexivity Journal</strong>
+      <div>Daily documentation of the researcher's own agency and power dynamics. ANT symmetry applied to the researcher as actant. Regular community review sessions challenge and revise notes.</div>
+      <em>Targets: Q1, Q5</em>
+    </div>
+  </div>
+</div>
+
+<!-- ETHICS -->
+<div class="section">
+  <h2 class="section-h">Ethical Framework: Theoretically Derived, Not Procedurally Imposed</h2>
+  <p style="font-size:13px;margin-bottom:16px">The ethical commitments of this research are generated directly by its theoretical frameworks. Free, Prior, and Informed Consent and community veto are the procedural floor; the following constitutes the theoretical substance:</p>
+
+  <div class="ethics-box">
+    <h4>ANT's Symmetry Principle Applied Reflexively</h4>
+    <p>The researcher is herself an actant in the heritage assemblage she studies. Institutional affiliation, analytical frameworks, and publications intervene in the network and reshape the community's relationship to UNESCO and INTERPOL regardless of intent. The reflexivity journal is not reflective practice—it is the instrument through which ANT's symmetry is applied to the researcher herself.</p>
+  </div>
+
+  <div class="ethics-box">
+    <h4>PAR's Epistemic Non-Substitution</h4>
+    <p>The community's interpretive authority over its own knowledge is ontologically prior to the researcher's analytical framework. When a co-researcher disputes an interpretation, that dispute is not feedback to weigh—it is the epistemologically primary account. The thesis must present both readings where they diverge, with the community's reading given precedence.</p>
+  </div>
+
+  <div class="ethics-box">
+    <h4>Neidich's Representational Non-Extraction</h4>
+    <p>Translating nomadic knowledge into ANT-PAR vocabulary for European academic circulation risks performing the same substitution it critiques. <strong>Co-authorship is the structural response:</strong> community members must author the accounts of their own practices, not merely validate the researcher's version.</p>
+  </div>
+
+  <div class="ethics-box">
+    <h4>Guattari's More-Than-Human Responsibility</h4>
+    <p>If landscape features, animals, and atmospheric systems are genuine actants in the heritage assemblage, the research's obligations extend beyond its human participants to those non-human entities. In Protocol 3, photographing the voids left by stolen panels is an act of witnessing harm to the non-human components of the assemblage.</p>
+  </div>
+
+  <div class="intro-box" style="background:rgba(56,82,24,.05);border-left-color:var(--ms2)">
+    <strong>Structural Safeguard:</strong> The five research protocols operate modularly. Should any single protocol be completely withdrawn by co-researchers, the remaining four are structurally calibrated to yield a sufficiently robust evidentiary base for a defensible thesis.
+  </div>
+</div>
+
+<!-- OUTPUTS -->
+<div class="section">
+  <h2 class="section-h">Research Outputs: Four Institutional Forums</h2>
+
+  <div class="output-grid">
+    <div class="output-card">
+      <h4>Output 1: Community Assemblage Atlas</h4>
+      <p>A multi-layer community-controlled atlas mapping rock art sites, migration routes, and atmospheric phenomena as an integrated relational network; formatted for UNESCO World Heritage reporting while exceeding its epistemic assumptions. <strong>This research's primary scholarly artifact.</strong></p>
+    </div>
+    <div class="output-card">
+      <h4>Output 2: Theft Controversy Dossiers</h4>
+      <p>Case-by-case photovoice and controversy map dossiers tracing specific theft incidents from extraction site through the trafficking chain to the collecting institution; formatted for INTERPOL's Works of Art unit and repatriation proceedings.</p>
+    </div>
+    <div class="output-card">
+      <h4>Output 3: ANT-PAR Toolkit</h4>
+      <p>An open-access methodological engine—the five protocols with refinement records and adaptation guides—co-applicable across nomadic heritage contexts globally. Includes the refinement and veto record as a primary methodological document.</p>
+    </div>
+    <div class="output-card">
+      <h4>Output 4: Decolonial Governance Model</h4>
+      <p>A normative framework proposing: (i) <strong>relational cultural property</strong>—juridical standing extended to the heritage assemblage as a whole, not only the extracted object; (ii) <strong>epistemic evidence as a legal category</strong> admissible without written documentation; (iii) <strong>amendments to UNESCO's Outstanding Universal Value criteria</strong> for nomadic and mobile heritage assemblages.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSFERABILITY -->
+<div class="section">
+  <h2 class="section-h">Transferability & Global Scope</h2>
+  
+  <p style="font-size:13px;margin:12px 0">Rock art theft is structural, not regional. The same sedentarist epistemology that makes nomadic heritage ungovernable operates from the Arctic to the Andes. The framework is therefore designed as a methodology for nomadic societies broadly, not a Saharan case study.</p>
+
+  <p style="font-size:13px;margin:12px 0"><strong>What transfers:</strong> The architecture and political logic—the PAR-ANT bridge, Neidich's mapping methodology, the modular protocol design.</p>
+
+  <p style="font-size:13px;margin:12px 0"><strong>What does not transfer unchanged:</strong> Saharan actant ontologies, local cosmological vocabulary, jurisdiction-specific legal landscapes. Each application is co-designed with the receiving community from the ground up—never imposed.</p>
+
+  <p style="font-size:13px;margin:12px 0"><strong>Transferability contexts include:</strong> All communities facing climate-accelerated looting—Sámi reindeer routes, Arctic archaeological sites, Indigenous American rock art, Aboriginal Australian sacred sites, Bedouin heritage landscapes.</p>
+
+  <div class="problem" style="border-top:2px solid var(--go2);padding-top:14px">
+    The Phase 4 pilot transfer is a substantive research activity, not a proof-of-concept. The second nomadic context is engaged from scratch and co-designed with that community from Phase 1 onward. That distinction—what carries across, what cannot—is itself a primary research finding.
+  </div>
+</div>
+
+<!-- ATLAS INTERACTIVE -->
+<div class="section">
+  <h2 class="section-h">The Nomadic Assemblage Atlas: Prototype Simulation</h2>
+  
+  <p style="font-size:13px;margin:12px 0">To illustrate the operational form of this research, a prototype simulation of the Nomadic Assemblage Atlas has been developed, rendering four integrated visualisations:</p>
+
+  <div style="margin:14px 0;padding:12px 16px;background:var(--bg2);border-left:3px solid var(--go)">
+    <p style="font-size:12px;margin:6px 0"><strong>1. ANT Assemblage View:</strong> The heritage network as a living system of human and non-human actants, their relational agency, and disruptions caused by extraction.</p>
+    <p style="font-size:12px;margin:6px 0"><strong>2. Neidich Cognitive Map:</strong> Institutional capture vs. community control mapped across Guattari's three ecologies (environmental, social, mental), showing where knowledge has been substituted vs. where it remains autonomous.</p>
+    <p style="font-size:12px;margin:6px 0"><strong>3. Controversy Chain Map:</strong> The full theft network—extractors, dealers, auction houses, collectors—showing every actant that makes rock art theft economically viable and juridically accountable.</p>
+    <p style="font-size:12px;margin:6px 0"><strong>4. Governance Layer:</strong> Data sovereignty architecture showing who owns each piece of research data, who can publish it, and who can withdraw it. The veto mechanism as a primary research finding.</p>
+  </div>
+
+  <a href="https://douniarloumachi-dotcom.github.io/Nomadic-Atlas/atlas.html" class="atlas-link" target="_blank">↗ Access the Interactive Atlas Prototype</a>
+
+  <p style="font-size:12px;color:var(--dim2);margin-top:8px;font-style:italic">The simulation uses illustrative data. The full atlas will be populated collaboratively with community co-researchers during fieldwork phases 1–3.</p>
+</div>
+
+<!-- RESEARCH CONTEXT -->
+<div class="section">
+  <h2 class="section-h">Intellectual Context & Supervision</h2>
+  
+  <p style="font-size:13px;margin:12px 0">This research is proposed for the <strong>Master's Programme at Paris Panthéon-Sorbonne</strong>, where it contributes directly to ongoing scholarly conversations around decolonial methodologies, heritage anthropology, and material culture circulation.</p>
+
+  <div class="research-context">
+    The theoretical anchoring draws from Paris-based scholarship on material culture circulation, Global South/North asymmetries, and decolonial theory, while operationalizing these frameworks through ANT, PAR, and Material Engagement Theory. The research demonstrates how abstract theoretical commitments (epistemic sovereignty, non-human agency recognition, researcher reflexivity) can be translated into concrete methodological protocols and governance structures that are simultaneously rigorous and transformative.
+  </div>
+
+  <p style="font-size:13px;margin:12px 0">The research is positioned as a contribution to anthropological theory and method while remaining accountable to the communities whose knowledge grounds it. It advances the field by proposing that decolonial methodology is not a restraint on academic rigor—it is a generator of more robust, more politically consequential, and more theoretically sophisticated scholarship.</p>
+</div>
+
+<!-- SIGNIFICANCE -->
+<div class="section">
+  <h2 class="section-h">Why This Matters</h2>
+
+  <div class="intro-box">
+    <strong>For heritage protection:</strong> Creates the first systematic governance framework for mobile heritage that recognizes non-human agency and guarantees epistemic sovereignty, directly applicable to UNESCO and repatriation negotiations.
+  </div>
+
+  <div class="intro-box">
+    <strong>For decolonial methodology:</strong> Solves a long-standing tension between ANT's symmetry principle and PAR's transformative commitments by showing they are not contradictory but mutually strengthening.
+  </div>
+
+  <div class="intro-box">
+    <strong>For global nomadic communities:</strong> Provides transferable protocols for asserting legal and epistemic standing in jurisdictions that currently render their heritage ungovernable under international law.
+  </div>
+
+  <div class="intro-box">
+    <strong>For anthropological theory:</strong> Advances Material Engagement Theory into participatory domains; demonstrates how Guattari's ecosophy operates operationally; applies ANT reflexivity to the researcher as a practice, not a position.
+  </div>
+</div>
+
+<!-- KEY READINGS -->
+<div class="section">
+  <h2 class="section-h">Theoretical Anchors</h2>
+  <div style="font-size:12px;line-height:1.8;column-count:2;column-gap:24px">
+    <p><strong>Actor-Network Theory:</strong> Latour (2005) <em>Reassembling the Social</em>; Callon (1986) "Éléments pour une sociologie de la traduction"; Law (1992) "Notes on the theory of the actor-network"</p>
+    
+    <p><strong>Participatory Action Research:</strong> Fals-Borda & Rahman (1991) <em>Action and Knowledge</em>; Smith (2012) <em>Decolonizing Methodologies</em>; Smith (2006) <em>Uses of Heritage</em></p>
+    
+    <p><strong>Material Engagement Theory:</strong> Malafouris (2013) <em>How Things Shape the Mind</em>; Haraway (1988) "Situated Knowledges"</p>
+    
+    <p><strong>Cognitive Capitalism & Epistemology:</strong> Neidich (2010) <em>Resistance is Futile</em>; Neidich (2013) "The Neurobiopolitics of Global Consciousness"; Moulier Boutang (2011) <em>Cognitive Capitalism</em></p>
+    
+    <p><strong>Ecosophy & Environmental Ontology:</strong> Guattari (1989) <em>Les trois écologies</em>; Puig de la Bellacasa (2017) <em>Matters of Care</em>; van Dooren et al. (2016) "Multispecies Studies"</p>
+    
+    <p><strong>Heritage & Decolonialism:</strong> Ciotti (2023) "Make no mystique!" <em>Third Text</em>; Harrison (2013) <em>Heritage: Critical Approaches</em>; Labadi (2022) <em>Rethinking Heritage for Sustainable Development</em></p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-box">
+  <p style="margin:0;font-size:14px">This research is ready for development into a full doctoral proposal. <strong>The interactive atlas prototype</strong> demonstrates the operational architecture; the five protocols are theoretically grounded and empirically testable; the community access and ethical commitments are substantive, not performative.</p>
+  <p style="margin-top:12px;margin-bottom:0">For further discussion, collaboration, or institutional partnership inquiries: <a href="mailto:dounia.loumachi@example.com">dounia.loumachi@example.com</a></p>
+</div>
+
+<div class="footer">
+  <p>Nomadic Assemblages Research Project · Dounia Ryane Loumachi</p>
+  <p style="margin-top:8px">Paris Panthéon-Sorbonne · 2025</p>
+  <p style="margin-top:12px;color:var(--dim)">This presentation integrates theoretical framework, methodological design, and interactive visualization. The prototype atlas is illustrative; full data governance and community co-authorship protocols are specified in the complete research proposal.</p>
+</div>
+
+</div>
+</body>
+</html>
