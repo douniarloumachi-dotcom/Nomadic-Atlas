@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomadic Assemblages — ANT Research View</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F1E7;--bg2:#EDE5D0;--bg3:#E3D8C0;--ink:#1C1206;--dim:#6B5436;--dim2:#A08858;
+  --bord:#C8AE88;--tr:#8B2E0E;--tr2:#B83C1A;--go:#8A5E08;--go2:#B07C14;
+  --ms:#385218;--ms2:#527828;--am:#6A3E06;--sa:#9A7830;
+  --F:'Lora',serif;--FS:'IBM Plex Sans',sans-serif;--FM:'IBM Plex Mono',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink)}
+body{font-family:var(--FS);font-size:14px;display:flex;flex-direction:column}
+.hdr{height:52px;background:var(--ink);flex-shrink:0;display:flex;align-items:center;padding:0 18px;border-bottom:3px solid var(--tr)}
+.hdr-title{font-family:var(--F);font-size:16px;font-weight:500;color:#F5C842;margin-right:14px;white-space:nowrap}
+.hdr-sep{width:1px;height:22px;background:#2E1C08;margin:0 14px}
+.hdr-by{font-family:var(--FM);font-size:9px;color:#FFD966;letter-spacing:.07em;white-space:nowrap}
+.hdr-nav{display:flex;margin-left:auto;height:100%;gap:1px}
+.nav-link{padding:0 15px;height:100%;display:flex;align-items:center;gap:7px;font-family:var(--FM);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#5A4020;text-decoration:none;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap}
+.nav-link:hover{color:#FFD966;background:rgba(255,217,102,.08)}
+.nav-link.on{color:#F5C842;border-bottom-color:var(--tr)}
+.body{display:flex;flex:1;overflow:hidden}
+.lft{width:268px;flex-shrink:0;background:var(--ink);border-right:1px solid #2A1808;overflow-y:auto;display:flex;flex-direction:column;padding:16px}
+.lft::-webkit-scrollbar{width:3px}.lft::-webkit-scrollbar-thumb{background:#2E1C08}
+.lft-h{font-family:var(--F);font-size:14px;font-weight:500;color:#F5C842;margin-bottom:12px}
+.lft-section{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #2A1808}
+.lft-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:#C89030;margin-bottom:8px}
+.lft-text{font-size:11px;color:#E8C870;line-height:1.5;margin-bottom:8px}
+.lft-text strong{color:#FFE566;font-weight:500}
+.ctr{flex:1;position:relative;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;padding:24px}
+.ctr::-webkit-scrollbar{width:3px}.ctr::-webkit-scrollbar-thumb{background:var(--bord)}
+.ctr-scroll{flex:1;overflow-y:auto;padding-right:12px}
+.ctr-title{font-family:var(--F);font-size:28px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.ctr-subtitle{font-family:var(--FS);font-size:13px;color:var(--dim);font-style:italic;margin-bottom:20px}
+.content-block{margin-bottom:24px}
+.content-block h3{font-family:var(--F);font-size:16px;font-weight:500;color:var(--ink);margin-bottom:10px;margin-top:16px}
+.content-block p{font-size:13px;line-height:1.65;color:var(--dim);margin-bottom:10px}
+.content-block strong{color:var(--ink);font-weight:500}
+.intro-box{background:rgba(139,46,14,.05);border-left:3px solid var(--tr);padding:12px 14px;margin:12px 0;font-size:12px;line-height:1.6}
+.intro-box strong{color:var(--tr2)}
+.framework-box{background:var(--bg2);border:1px solid var(--bord);padding:12px 14px;margin:12px 0;border-left:3px solid var(--go)}
+.framework-box h4{font-family:var(--F);font-size:13px;color:var(--ink);margin-bottom:6px}
+.framework-box p{font-size:12px;color:var(--dim);line-height:1.5;margin:4px 0}
+.rgt{width:256px;flex-shrink:0;background:var(--bg2);border-left:1px solid var(--bord);display:flex;flex-direction:column;overflow:hidden;padding:14px}
+.rgt-h{font-family:var(--F);font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px}
+.rgt-section{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--bord)}
+.rgt-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:6px}
+.rgt-body{font-size:11px;color:var(--dim);line-height:1.5}
+.rgt-body strong{color:var(--ink);font-weight:500}
+.btn-group{display:flex;gap:6px;margin-top:12px}
+.btn{padding:6px 10px;background:var(--ink);color:#F5C842;border:none;font-family:var(--FM);font-size:9px;letter-spacing:.08em;cursor:pointer;text-transform:uppercase;transition:all .18s;border-left:2px solid var(--tr)}
+.btn:hover{background:var(--tr2);color:white}
+.sbar{height:25px;flex-shrink:0;background:var(--bg3);border-top:1px solid var(--bord);display:flex;align-items:center;padding:0 14px;gap:18px;font-family:var(--FM);font-size:8px;letter-spacing:.07em;color:var(--dim2)}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-title">Nomadic Assemblage Atlas</div>
+  <div class="hdr-sep"></div>
+  <div class="hdr-by">Research Proposal · Paris Panthéon-Sorbonne Master's · 2025</div>
+  <div class="hdr-nav">
+    <a href="research-ant-view.html" class="nav-link on">ANT View</a>
+    <a href="research-neidich-view.html" class="nav-link">Neidich View</a>
+    <a href="research-controversy-view.html" class="nav-link">Controversy</a>
+    <a href="research-governance-view.html" class="nav-link">Governance</a>
+    <a href="atlas.html" class="nav-link">Interactive Atlas</a>
+  </div>
+</div>
+<div class="body">
+<div class="lft">
+  <div class="lft-h">ANT Research Framework</div>
+  <div class="lft-section">
+    <div class="lft-label">Research Problem</div>
+    <div class="lft-text">Rock art theft is not property crime—it is <strong>cognitive dispossession</strong>. Stolen panels are cognitive infrastructure through which knowledge lives. Their removal dissolves irreversibly the assemblages they sustain.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Core Question</div>
+    <div class="lft-text">How can ANT and PAR be hybridised to create a decolonial methodology for combating rock art theft in nomadic societies, recognising non-human agency and community epistemic sovereignty?</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Field Region</div>
+    <div class="lft-text"><strong>Algerian Sahara</strong> and transborder extensions. Tuareg and associated nomadic communities. Tassili n'Ajjer network. Transferable to all nomadic contexts globally (Arctic to Andes).</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Why ANT?</div>
+    <div class="lft-text">Generalised symmetry principle: rock art panels, gueltas, migration routes, and atmospheric patterns are <strong>actants with equal agency</strong>. Their removal restructures the entire heritage network.</div>
+  </div>
+</div>
+
+<div class="ctr">
+  <div class="ctr-title">ANT Assemblage — The Heritage Network as Living System</div>
+  <div class="ctr-subtitle">How Actor-Network Theory reveals what is actually at stake in rock art theft</div>
+  
+  <div class="ctr-scroll">
+    <div class="content-block">
+      <h3>The Problem: What Conventional Heritage Law Misses</h3>
+      <p>When a rock art panel is stolen, what is actually destroyed? Not just an object. The loss is <strong>the restructuring of every connection the panel sustained</strong>:</p>
+      <div class="intro-box">
+        <p><strong>• A route loses its anchor.</strong> Migration corridors depend on visible orientation markers. Remove them and navigational logic collapses.</p>
+        <p><strong>• A water source becomes harder to find.</strong> Landscape features work in assemblies. Disconnect one and the system fragments.</p>
+        <p><strong>• A season loses its marker.</strong> Panels mark seasonal calendars embedded in rock. Theft breaks intergenerational transmission of timing knowledge.</p>
+        <p><strong>• A knowledge chain breaks.</strong> The cognitive infrastructure dissolves. The void is still an actant—its effects are real.</p>
+      </div>
+      <p>Conventional heritage law protects <strong>objects</strong>. ANT shows what is actually at stake: a <strong>network of relationships</strong>.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Actor-Network Theory: Generalised Symmetry</h3>
+      <p>ANT (Latour, Callon, Law) operates on a single principle: <strong>give equal status to every entity that has effects</strong>. In this research:</p>
+      
+      <div class="framework-box">
+        <h4>Rock art panels (non-human)</h4>
+        <p>Cosmological anchors, seasonal calendars, orientation devices. They actively structure human behaviour, hold knowledge across generations, orient movement. Their agency is real: remove them and relationships reorganise.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>Water sources (non-human)</h4>
+        <p>Gueltas and waterways coordinate pastoral movement. They are not passive features—they are the nodes through which migration routes become possible. Their relational logic is only visible through ANT analysis.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>Migration routes (non-human)</h4>
+        <p>Not lines on a map. Routes are dynamic actants sustained by seasonal markers, water sources, and elder knowledge. They restructure when any actant is removed.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>Atmospheric actants (non-human)</h4>
+        <p>Wind cycles, stellar patterns, seasonal timing. These are not backdrop—they are navigation infrastructure. They appear as nodes in the assemblage with equal ontological standing.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>Community co-researchers (human)</h4>
+        <p>Elders, photographers, knowledge holders. They hold veto authority over the research. Their interpretive authority is ontologically prior to the researcher's framework. When they dispute an analysis, that is the epistemologically primary account.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>Why This Matters for Heritage Protection</h3>
+      <p>ANT's symmetry principle has legal and political consequences:</p>
+      <p><strong>1. The void becomes actionable.</strong> When a panel is stolen, the void it leaves is not absence—it is an active force restructuring all connections. This can be documented, evidenced, and presented in legal proceedings.</p>
+      <p><strong>2. Disrupted routes become harm.</strong> If routes are actants (not just concepts), their disruption is a demonstrable loss that extends beyond the extracted object. Repatriation claims can now argue for restoration of relational assemblage, not only the stolen panels.</p>
+      <p><strong>3. Non-human testimony becomes valid.</strong> Landscape features, animals, and atmospheric systems can be documented as part of the heritage assemblage that theft damages. This expands the evidentiary base beyond human testimony alone.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Operationalising ANT: Five Research Protocols</h3>
+      <p>The research implements ANT through five iterative protocols, each revealing different dimensions of the assemblage:</p>
+
+      <div class="framework-box">
+        <h4>P1: Participatory Assemblage Mapping</h4>
+        <p>Communities map all actants through oral narrative, drawing, photography, embodied performance. Non-literate participation fully enabled. This is where ANT's symmetry is first established: every actant—human and non-human—appears on the map as equal node.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>P2: Translational Co-Analysis Interviews</h4>
+        <p>Conducted in participants' chosen language and setting. Collaborative analysis occurs within the session; participants direct interpretation. Untranslatable concepts generate new terminology rather than being flattened into Western categories. This is ANT applied to epistemology: what cannot be translated is itself a finding.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>P3: Socio-Material Photovoice</h4>
+        <p>Participants photograph any actant relevant to the assemblage, including voids left by stolen panels. Group discussions trace how each actant's agency changes after theft. Photography becomes a method for documenting non-human testimony.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>P4: Controversy Mapping & Intervention</h4>
+        <p>Maps trace every actant in the theft network: extractors, dealers, auction houses, collectors, and the landscape features disoriented by theft. ANT follows the chain of action that makes rock art theft economically viable.</p>
+      </div>
+
+      <div class="framework-box">
+        <h4>P5: Researcher Reflexivity Journal</h4>
+        <p>Daily documentation of the researcher's own agency and power dynamics. ANT's symmetry is applied to the researcher herself: her institutional power must be made transparent and accountable. This is not reflective practice—it is ANT as methodology applied reflexively.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>Theoretical Integration with Other Frameworks</h3>
+      <p>ANT provides the principle of symmetry but requires complementary frameworks:</p>
+      
+      <p><strong>+ Malafouris's Material Engagement Theory:</strong> Explains why non-human actants matter—cognition is distributed across bodies, tools, and environments. Stolen panels are cognitive infrastructure. Their removal is cognitive dispossession.</p>
+      
+      <p><strong>+ Guattari's Three Ecologies:</strong> Explains why theft operates across multiple registers simultaneously. Environmental harm (disoriented routes), social harm (governance fragmentation), mental/cognitive harm (broken knowledge transmission) are inseparable.</p>
+      
+      <p><strong>+ Neidich's Cognitive Mapping:</strong> Translates ANT's network description into a politically legible format showing which actants are under community control vs. institutionally captured.</p>
+      
+      <p><strong>+ PAR's Epistemic Non-Substitution:</strong> Ensures ANT's symmetry principle protects community authority. When a community member disputes an ANT analysis, their interpretation is not feedback—it is the epistemologically primary account. ANT symmetry applied to researcher accountability means community authority supersedes researcher authority.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>What Transfers Across Nomadic Contexts</h3>
+      <p>The ANT framework is designed as a translation engine applicable across nomadic heritage globally:</p>
+      <p><strong>What transfers:</strong> The principle of symmetry, the five protocol structure, the mapping methodology, the approach to void sites as active actants rather than absences.</p>
+      <p><strong>What must be co-designed:</strong> Which actants matter in each context (Arctic routes vs. Andean sites have different actant ontologies), local cosmological vocabulary, jurisdiction-specific legal frameworks.</p>
+      <p>Each application engages a new nomadic community from the ground up. The ANT architecture is not imposed—it is adapted.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Legal & Policy Implications</h3>
+      <p>ANT analysis produces evidence-based arguments for reframing international heritage law:</p>
+      <p><strong>1. Relational cultural property:</strong> Juridical standing extended to the heritage assemblage as a whole, not only the extracted object. This changes repatriation proceedings under UNESCO 1970 Convention and UNIDROIT 1995 Convention.</p>
+      <p><strong>2. Void sites as legal entities:</strong> The absence created by theft becomes a recognized harm with legal standing. Prosecution can extend beyond the extraction point to address network-wide accountability.</p>
+      <p><strong>3. Non-human testimony as evidence:</strong> Landscape features documented through photovoice and assemblage mapping become admissible evidence in legal proceedings, expanding the evidentiary base beyond written documentation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="rgt">
+  <div class="rgt-h">Research At a Glance</div>
+  
+  <div class="rgt-section">
+    <div class="rgt-label">Candidate</div>
+    <div class="rgt-body">Dounia Ryane Loumachi</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Institution</div>
+    <div class="rgt-body">Paris Panthéon-Sorbonne, Master's Programme</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Field Site</div>
+    <div class="rgt-body"><strong>Primary:</strong> Algerian Sahara (Tassili n'Ajjer, Tuareg territories)<br><strong>Pilot:</strong> Second nomadic context (Phase 4)</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Timeline</div>
+    <div class="rgt-body">4 phases across 3+ field seasons. Month-33 community review gate.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Actants in Prototype</div>
+    <div class="rgt-body">10 mapped / est. 18 total. 1 void site. 2 migration routes (1 disrupted). 5 protocols active.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Primary Output</div>
+    <div class="rgt-body"><strong>Community Assemblage Atlas</strong> — multi-layer interactive network mapping all actants, their relational agency, disruptions, and governance status.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Policy Documents</div>
+    <div class="rgt-body">Controversy dossiers for INTERPOL; ANT-PAR toolkit (open-access); Decolonial governance model.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Key References</div>
+    <div class="rgt-body"><strong>Theory:</strong> Latour (2005), Callon (1986), Malafouris (2013), Neidich (2010)<br><strong>Method:</strong> Fals-Borda & Rahman (1991), Smith (2012)</div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn">View Atlas</button>
+    <button class="btn">Next Section</button>
+  </div>
+</div>
+</div>
+
+<div class="sbar">
+  <span>View: ANT Research Framework</span>
+  <span>Field cycle: Phase 1–2 (preparation & first immersion)</span>
+  <span>Actants mapped: 10 / est. 18</span>
+  <span style="margin-left:auto">Simulation — illustrative data only</span>
+</div>
+
+<script>
+document.querySelector('.btn-group .btn:last-child').onclick=()=>{
+  window.location.href='research-neidich-view.html';
+};
+</script>
+</body>
+</html>
