@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomadic Assemblages — Neidich Research View</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F1E7;--bg2:#EDE5D0;--bg3:#E3D8C0;--ink:#1C1206;--dim:#6B5436;--dim2:#A08858;
+  --bord:#C8AE88;--tr:#8B2E0E;--tr2:#B83C1A;--go:#8A5E08;--go2:#B07C14;
+  --ms:#385218;--ms2:#527828;--am:#6A3E06;--sa:#9A7830;
+  --F:'Lora',serif;--FS:'IBM Plex Sans',sans-serif;--FM:'IBM Plex Mono',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink)}
+body{font-family:var(--FS);font-size:14px;display:flex;flex-direction:column}
+.hdr{height:52px;background:var(--ink);flex-shrink:0;display:flex;align-items:center;padding:0 18px;border-bottom:3px solid var(--tr)}
+.hdr-title{font-family:var(--F);font-size:16px;font-weight:500;color:#F5C842;margin-right:14px;white-space:nowrap}
+.hdr-sep{width:1px;height:22px;background:#2E1C08;margin:0 14px}
+.hdr-by{font-family:var(--FM);font-size:9px;color:#FFD966;letter-spacing:.07em;white-space:nowrap}
+.hdr-nav{display:flex;margin-left:auto;height:100%;gap:1px}
+.nav-link{padding:0 15px;height:100%;display:flex;align-items:center;gap:7px;font-family:var(--FM);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#5A4020;text-decoration:none;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap}
+.nav-link:hover{color:#FFD966;background:rgba(255,217,102,.08)}
+.nav-link.on{color:#F5C842;border-bottom-color:var(--tr)}
+.body{display:flex;flex:1;overflow:hidden}
+.lft{width:268px;flex-shrink:0;background:var(--ink);border-right:1px solid #2A1808;overflow-y:auto;display:flex;flex-direction:column;padding:16px}
+.lft::-webkit-scrollbar{width:3px}.lft::-webkit-scrollbar-thumb{background:#2E1C08}
+.lft-h{font-family:var(--F);font-size:14px;font-weight:500;color:#F5C842;margin-bottom:12px}
+.lft-section{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #2A1808}
+.lft-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:#C89030;margin-bottom:8px}
+.lft-text{font-size:11px;color:#E8C870;line-height:1.5;margin-bottom:8px}
+.lft-text strong{color:#FFE566;font-weight:500}
+.ctr{flex:1;position:relative;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;padding:24px}
+.ctr::-webkit-scrollbar{width:3px}.ctr::-webkit-scrollbar-thumb{background:var(--bord)}
+.ctr-scroll{flex:1;overflow-y:auto;padding-right:12px}
+.ctr-title{font-family:var(--F);font-size:28px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.ctr-subtitle{font-family:var(--FS);font-size:13px;color:var(--dim);font-style:italic;margin-bottom:20px}
+.content-block{margin-bottom:24px}
+.content-block h3{font-family:var(--F);font-size:16px;font-weight:500;color:var(--ink);margin-bottom:10px;margin-top:16px}
+.content-block p{font-size:13px;line-height:1.65;color:var(--dim);margin-bottom:10px}
+.content-block strong{color:var(--ink);font-weight:500}
+.intro-box{background:rgba(106,62,6,.05);border-left:3px solid var(--am);padding:12px 14px;margin:12px 0;font-size:12px;line-height:1.6}
+.intro-box strong{color:var(--am)}
+.capture-box{background:var(--bg2);border:1px solid var(--bord);padding:12px 14px;margin:12px 0;border-left:3px solid var(--tr2)}
+.capture-box h4{font-family:var(--F);font-size:13px;color:var(--tr2);margin-bottom:6px}
+.capture-box p{font-size:12px;color:var(--dim);line-height:1.5;margin:4px 0}
+.ecology-box{background:var(--bg2);border:1px solid var(--bord);padding:12px 14px;margin:12px 0;border-top:3px solid var(--go2)}
+.ecology-box h4{font-family:var(--F);font-size:13px;color:var(--ink);margin-bottom:6px}
+.ecology-box p{font-size:12px;color:var(--dim);line-height:1.5;margin:4px 0}
+.rgt{width:256px;flex-shrink:0;background:var(--bg2);border-left:1px solid var(--bord);display:flex;flex-direction:column;overflow:hidden;padding:14px}
+.rgt-h{font-family:var(--F);font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px}
+.rgt-section{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--bord)}
+.rgt-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:6px}
+.rgt-body{font-size:11px;color:var(--dim);line-height:1.5}
+.rgt-body strong{color:var(--ink);font-weight:500}
+.btn-group{display:flex;gap:6px;margin-top:12px}
+.btn{padding:6px 10px;background:var(--ink);color:#F5C842;border:none;font-family:var(--FM);font-size:9px;letter-spacing:.08em;cursor:pointer;text-transform:uppercase;transition:all .18s;border-left:2px solid var(--tr)}
+.btn:hover{background:var(--tr2);color:white}
+.sbar{height:25px;flex-shrink:0;background:var(--bg3);border-top:1px solid var(--bord);display:flex;align-items:center;padding:0 14px;gap:18px;font-family:var(--FM);font-size:8px;letter-spacing:.07em;color:var(--dim2)}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-title">Nomadic Assemblage Atlas</div>
+  <div class="hdr-sep"></div>
+  <div class="hdr-by">Research Proposal · Paris Panthéon-Sorbonne Master's · 2025</div>
+  <div class="hdr-nav">
+    <a href="research-ant-view.html" class="nav-link">ANT View</a>
+    <a href="research-neidich-view.html" class="nav-link on">Neidich View</a>
+    <a href="research-controversy-view.html" class="nav-link">Controversy</a>
+    <a href="research-governance-view.html" class="nav-link">Governance</a>
+    <a href="atlas.html" class="nav-link">Interactive Atlas</a>
+  </div>
+</div>
+<div class="body">
+<div class="lft">
+  <div class="lft-h">Neidich Cognitive Framework</div>
+  <div class="lft-section">
+    <div class="lft-label">Core Concept</div>
+    <div class="lft-text">Under <strong>cognitive capitalism</strong>, communities' ways of knowing are progressively replaced by externally legible representations. UNESCO categories, art market valuations, and tourist narratives overwrite the community's own cognitive map.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Three Ecologies</div>
+    <div class="lft-text"><strong>Environmental:</strong> landscape, material actants. <strong>Social:</strong> routes, practices, governance. <strong>Mental:</strong> cosmology, memory, meaning. All three are inseparable and vulnerable to substitution.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">The Mapping Function</div>
+    <div class="lft-text">Neidich's cognitive mapping visualizes <strong>institutional capture vs. community control</strong> across the three ecologies. Where knowledge remains autonomous vs. where it has been substituted is made spatially visible as a political argument.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Why It Matters</div>
+    <div class="lft-text">Physical theft is preceded by epistemic theft. Communities lose cognitive authority before they lose objects. Mapping reveals this process and enables intervention at the governance level.</div>
+  </div>
+</div>
+
+<div class="ctr">
+  <div class="ctr-title">Neidich Cognitive Mapping — Institutional Capture vs. Community Control</div>
+  <div class="ctr-subtitle">How cognitive capitalism operates across Guattari's three ecologies—and where PAR-ANT restitution becomes possible</div>
+  
+  <div class="ctr-scroll">
+    <div class="content-block">
+      <h3>The Problem: Cognitive Capitalism & Epistemic Substitution</h3>
+      <p>Warren Neidich argues that under <strong>cognitive capitalism</strong>, communities' ways of knowing are progressively replaced by externally legible representations. This happens <em>before</em> physical theft:</p>
+      
+      <div class="intro-box">
+        <p><strong>UNESCO heritage categories</strong> replace internally meaningful classifications. Panels become "Neolithic art" or "rock paintings" rather than cosmological markers or navigation anchors.</p>
+        <p><strong>Art market valuations</strong> reframe rock art as collectible commodity. Economic value becomes the only intelligible register, replacing spiritual or practical significance.</p>
+        <p><strong>Tourism narratives</strong> aestheticize rock art as scenic resources, erasing their function in indigenous knowledge systems. The panels become photographs to be consumed rather than cognitive infrastructure to be used.</p>
+      </div>
+
+      <p>By the time a panel is physically stolen, its community has already lost cognitive authority over it. <strong>The void site is the endpoint of a process that begins with representational capture.</strong></p>
+    </div>
+
+    <div class="content-block">
+      <h3>Guattari's Three Ecologies: Inseparable Registers of Harm</h3>
+      <p>Guattari (1989) insists that environmental, social, and mental ecologies are mutually entangled. When rock art theft occurs, harm cascades across all three simultaneously:</p>
+
+      <div class="ecology-box">
+        <h4>Environmental Ecology</h4>
+        <p>Landscape features, material actants, gueltas, migration routes. Theft disrupts these. A panel that oriented routes loses that function. Water sources lose their markers. The physical landscape becomes harder to navigate.</p>
+      </div>
+
+      <div class="ecology-box">
+        <h4>Social Ecology</h4>
+        <p>Routes, practices, governance structures, collective decision-making. When landscape anchors disappear, the social assemblies that depended on them fragment. Governance becomes harder to coordinate. Collective memory-making practices lose their infrastructure.</p>
+      </div>
+
+      <div class="ecology-box">
+        <h4>Mental/Cognitive Ecology</h4>
+        <p>Cosmology, memory, meaning, intergenerational transmission. Knowledge that lived in panels cannot be recovered by documentation alone. Elders report navigational uncertainty. Young people cannot learn routes as their ancestors did. The cognitive architecture dissolves.</p>
+      </div>
+
+      <p><strong>Response to any single register will fail.</strong> Legal proceedings addressing only property (environmental theft). UNESCO interventions addressing only cultural value (mental ecology). Development projects addressing only social infrastructure (routes). But these are inseparable. Effective heritage protection must operate across all three simultaneously.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Cognitive Mapping: Making Capture Visible</h3>
+      <p>Neidich's cognitive mapping makes institutional capture spatially legible as a political argument. In this research, we map institutional capture across two dimensions:</p>
+
+      <p><strong>Vertical axis: Degree of institutional capture</strong></p>
+      <div style="margin:12px 0;padding:10px 14px;background:var(--bg2);font-size:12px;border-left:2px solid var(--tr2);line-height:1.6">
+        <p><strong>Bottom (⬇):</strong> Knowledge fully under community control. Vocabulary, meaning, and governance are internally determined.</p>
+        <p><strong>Top (⬆):</strong> Knowledge fully captured or substituted by external institutions. UNESCO categories dominate. Market valuations determine significance. Tourism narratives are the public register.</p>
+      </div>
+
+      <p><strong>Horizontal axis: Guattari's three ecologies</strong></p>
+      <div style="margin:12px 0;padding:10px 14px;background:var(--bg2);font-size:12px;border-left:2px solid var(--go2);line-height:1.6">
+        <p><strong>Left:</strong> Environmental ecology — landscape, material actants, water sources, atmospheric phenomena.</p>
+        <p><strong>Centre:</strong> Social ecology — routes, practices, governance, collective decision-making.</p>
+        <p><strong>Right:</strong> Mental/Cognitive ecology — cosmology, memory, meaning, intergenerational transmission.</p>
+      </div>
+
+      <p>The map then plots specific actants and knowledge domains across these two axes, making visible where communities have retained epistemic sovereignty and where external capture has occurred.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Reading the Cognitive Map: Dashed vs. Solid Arrows</h3>
+
+      <div class="capture-box">
+        <h4>Dashed Arrows (Upward) = Extraction & Substitution</h4>
+        <p>These trace the movement of knowledge away from community control toward institutional capture. Cognitive capitalism moves knowledge upward. External representations substitute for internal meaning. This is the process of epistemic dispossession.</p>
+      </div>
+
+      <div class="capture-box">
+        <h4>Solid Arrows (Downward) = PAR-ANT Restitution</h4>
+        <p>These trace the research's interventions pulling knowledge back down: reclaiming vocabulary, co-producing governance tools, returning epistemic authority to communities. The green arrows show where PAR-ANT works.</p>
+      </div>
+
+      <p><strong>Key insight:</strong> The research cannot recover stolen panels. But it can restore community epistemic authority over what remains by working downward—asserting cognitive sovereignty against institutional capture.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>The Void Site in Cognitive Space</h3>
+
+      <div class="intro-box">
+        <p>On the cognitive map, the void site sits <strong>top-left</strong>—fully captured by the market, removed from community control. It is simultaneously extracted from the landscape (environmental ecology) and absent from community knowledge production (mental ecology).</p>
+        <p>The green downward arrows show where research intervenes: asserting community epistemic authority over the disrupted routes, cosmologies, and governance practices that the void left behind.</p>
+      </div>
+
+      <p>This is not recovery. It is <strong>epistemic restitution</strong>—the restoration of community authority to interpret and govern what the theft left behind. The void remains absent. But the community's right to speak about that absence, and to govern knowledge production around it, is restored.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Operationalising Cognitive Mapping: Research Integration</h3>
+
+      <p><strong>Protocol P1 (Participatory Assemblage Mapping)</strong> begins the cognitive mapping process: communities identify which actants matter, across all three ecologies. This is the baseline for measuring capture.</p>
+
+      <p><strong>Protocol P2 (Co-Analysis Interviews)</strong> makes institutional capture explicitly discussable. Questions like "What do outsiders call this? What do you call it?" map the gap between external representation and internal meaning. Untranslatable concepts mark points where community language has resisted external substitution.</p>
+
+      <p><strong>Neidich's mapping then visualizes</strong> these tensions, showing on the two-dimensional plane where each knowledge domain sits relative to institutional capture and ecological register.</p>
+
+      <p><strong>The result:</strong> Communities see where their epistemic sovereignty has been eroded and where it remains intact. The map becomes a governance tool for identifying which domains most urgently need protection and restitution.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Transferability: Cognitive Capitalism is Structural, Not Regional</h3>
+
+      <p>The same substitution dynamic operates globally. Sámi herding knowledge captured by climate science categories. Aboriginal sacred sites aestheticized by tourism. Indigenous Andean astronomy replaced by Western classifications.</p>
+
+      <p>Neidich's cognitive mapping translates across these contexts because the structure of cognitive capitalism is the same: external representation replaces internal meaning; institutional frameworks dominate local epistemologies; knowledge becomes capital.</p>
+
+      <p>Each nomadic community will have its own pattern of capture and resistance. The mapping methodology is transferable. The specific configurations are not.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Why Cognitive Mapping Matters for Heritage Protection</h3>
+
+      <p><strong>1. Prevention before extraction.</strong> By identifying and interrupting epistemic capture, communities can resist the process that makes physical theft economically viable. If rock art retains local meaning and governance, it is less valuable to external markets.</p>
+
+      <p><strong>2. Accountability to institutional capture.</strong> UNESCO, auction houses, and collectors are actants in cognitive capitalism. Mapping them reveals where external capture is happening and who benefits from it.</p>
+
+      <p><strong>3. Governance interventions at multiple levels.</strong> Cognitive maps show where institutional partnerships are possible (domains where capture is already deep) and where community authority is strongest (domains most worth protecting).</p>
+
+      <p><strong>4. Measurable restitution.</strong> Unlike cultural recovery narratives, cognitive mapping makes visible whether communities are regaining epistemic authority over their own knowledge—whether the downward arrows are actually moving the map.</p>
+    </div>
+  </div>
+</div>
+
+<div class="rgt">
+  <div class="rgt-h">Mapping Framework</div>
+  
+  <div class="rgt-section">
+    <div class="rgt-label">Theorist</div>
+    <div class="rgt-body"><strong>Warren Neidich</strong> — Cognitive capitalism, neurobiopolitics, cognitive mapping methodology</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Co-theorist</div>
+    <div class="rgt-body"><strong>Félix Guattari</strong> — Three ecologies framework (environmental, social, mental)</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Two Axes of Analysis</div>
+    <div class="rgt-body"><strong>Vertical:</strong> Institutional capture (bottom = autonomous, top = captured)<br><strong>Horizontal:</strong> Three ecologies (left-centre-right)</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Arrow Types</div>
+    <div class="rgt-body"><strong>Dashed upward:</strong> Epistemic substitution & extraction<br><strong>Solid downward:</strong> PAR-ANT restitution</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Key Insight</div>
+    <div class="rgt-body">Physical theft is the endpoint of epistemic theft. Communities lose cognitive authority before they lose objects. Mapping reverses the capture process by restoring epistemic sovereignty.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Research Contribution</div>
+    <div class="rgt-body">First operationalization of Neidich's mapping in participatory action research framework. Integrated with ANT for non-human agency recognition.</div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn" onclick="window.history.back()">Back</button>
+    <button class="btn" onclick="window.location.href='research-controversy-view.html'">Next</button>
+  </div>
+</div>
+</div>
+
+<div class="sbar">
+  <span>View: Neidich Cognitive Framework</span>
+  <span>Field cycle: Phase 1–2 (community co-design & epistemic baseline)</span>
+  <span>Domains assessed: 3 ecologies across captured–autonomous spectrum</span>
+  <span style="margin-left:auto">Simulation — illustrative data only</span>
+</div>
+
+</body>
+</html>
