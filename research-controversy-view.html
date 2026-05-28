@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomadic Assemblages — Controversy Research View</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F6F1E7;--bg2:#EDE5D0;--bg3:#E3D8C0;--ink:#1C1206;--dim:#6B5436;--dim2:#A08858;
+  --bord:#C8AE88;--tr:#8B2E0E;--tr2:#B83C1A;--go:#8A5E08;--go2:#B07C14;
+  --ms:#385218;--ms2:#527828;--am:#6A3E06;--sa:#9A7830;
+  --F:'Lora',serif;--FS:'IBM Plex Sans',sans-serif;--FM:'IBM Plex Mono',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink)}
+body{font-family:var(--FS);font-size:14px;display:flex;flex-direction:column}
+.hdr{height:52px;background:var(--ink);flex-shrink:0;display:flex;align-items:center;padding:0 18px;border-bottom:3px solid var(--tr)}
+.hdr-title{font-family:var(--F);font-size:16px;font-weight:500;color:#F5C842;margin-right:14px;white-space:nowrap}
+.hdr-sep{width:1px;height:22px;background:#2E1C08;margin:0 14px}
+.hdr-by{font-family:var(--FM);font-size:9px;color:#FFD966;letter-spacing:.07em;white-space:nowrap}
+.hdr-nav{display:flex;margin-left:auto;height:100%;gap:1px}
+.nav-link{padding:0 15px;height:100%;display:flex;align-items:center;gap:7px;font-family:var(--FM);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#5A4020;text-decoration:none;border-bottom:3px solid transparent;transition:all .18s;white-space:nowrap}
+.nav-link:hover{color:#FFD966;background:rgba(255,217,102,.08)}
+.nav-link.on{color:#F5C842;border-bottom-color:var(--tr)}
+.body{display:flex;flex:1;overflow:hidden}
+.lft{width:268px;flex-shrink:0;background:var(--ink);border-right:1px solid #2A1808;overflow-y:auto;display:flex;flex-direction:column;padding:16px}
+.lft::-webkit-scrollbar{width:3px}.lft::-webkit-scrollbar-thumb{background:#2E1C08}
+.lft-h{font-family:var(--F);font-size:14px;font-weight:500;color:#F5C842;margin-bottom:12px}
+.lft-section{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #2A1808}
+.lft-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:#C89030;margin-bottom:8px}
+.lft-text{font-size:11px;color:#E8C870;line-height:1.5;margin-bottom:8px}
+.lft-text strong{color:#FFE566;font-weight:500}
+.ctr{flex:1;position:relative;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;padding:24px}
+.ctr::-webkit-scrollbar{width:3px}.ctr::-webkit-scrollbar-thumb{background:var(--bord)}
+.ctr-scroll{flex:1;overflow-y:auto;padding-right:12px}
+.ctr-title{font-family:var(--F);font-size:28px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.ctr-subtitle{font-family:var(--FS);font-size:13px;color:var(--dim);font-style:italic;margin-bottom:20px}
+.content-block{margin-bottom:24px}
+.content-block h3{font-family:var(--F);font-size:16px;font-weight:500;color:var(--ink);margin-bottom:10px;margin-top:16px}
+.content-block p{font-size:13px;line-height:1.65;color:var(--dim);margin-bottom:10px}
+.content-block strong{color:var(--ink);font-weight:500}
+.problem-box{background:rgba(139,46,14,.05);border-left:3px solid var(--tr2);padding:12px 14px;margin:12px 0;font-size:12px;line-height:1.6}
+.problem-box strong{color:var(--tr2)}
+.chain-box{background:var(--bg2);border:1px solid var(--bord);padding:12px 14px;margin:12px 0;border-left:3px solid var(--am)}
+.chain-box h4{font-family:var(--F);font-size:13px;color:var(--ink);margin-bottom:6px}
+.chain-box p{font-size:12px;color:var(--dim);line-height:1.5;margin:4px 0}
+.actor-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.actor-node{background:var(--bg2);border:1px solid var(--bord);padding:10px 12px;font-size:12px;line-height:1.4;border-left:3px solid var(--go2)}
+.actor-node strong{color:var(--ink);display:block;margin-bottom:4px}
+.actor-node em{color:var(--dim2);display:block;font-size:10px;margin-top:4px}
+.rgt{width:256px;flex-shrink:0;background:var(--bg2);border-left:1px solid var(--bord);display:flex;flex-direction:column;overflow:hidden;padding:14px}
+.rgt-h{font-family:var(--F);font-size:14px;font-weight:500;color:var(--ink);margin-bottom:12px}
+.rgt-section{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--bord)}
+.rgt-label{font-family:var(--FM);font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2);margin-bottom:6px}
+.rgt-body{font-size:11px;color:var(--dim);line-height:1.5}
+.rgt-body strong{color:var(--ink);font-weight:500}
+.btn-group{display:flex;gap:6px;margin-top:12px}
+.btn{padding:6px 10px;background:var(--ink);color:#F5C842;border:none;font-family:var(--FM);font-size:9px;letter-spacing:.08em;cursor:pointer;text-transform:uppercase;transition:all .18s;border-left:2px solid var(--tr)}
+.btn:hover{background:var(--tr2);color:white}
+.sbar{height:25px;flex-shrink:0;background:var(--bg3);border-top:1px solid var(--bord);display:flex;align-items:center;padding:0 14px;gap:18px;font-family:var(--FM);font-size:8px;letter-spacing:.07em;color:var(--dim2)}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-title">Nomadic Assemblage Atlas</div>
+  <div class="hdr-sep"></div>
+  <div class="hdr-by">Research Proposal · Paris Panthéon-Sorbonne Master's · 2025</div>
+  <div class="hdr-nav">
+    <a href="research-ant-view.html" class="nav-link">ANT View</a>
+    <a href="research-neidich-view.html" class="nav-link">Neidich View</a>
+    <a href="research-controversy-view.html" class="nav-link on">Controversy</a>
+    <a href="research-governance-view.html" class="nav-link">Governance</a>
+    <a href="atlas.html" class="nav-link">Interactive Atlas</a>
+  </div>
+</div>
+<div class="body">
+<div class="lft">
+  <div class="lft-h">Controversy Mapping</div>
+  <div class="lft-section">
+    <div class="lft-label">Latour's Method</div>
+    <div class="lft-text">Controversy mapping traces every actant that makes a theft economically viable — not just the extractor, but the full downstream network: dealers, auction houses, collectors, and legal frameworks that allow provenance falsification.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">The Problem with Current Law</div>
+    <div class="lft-text">Prosecution targets <strong>extraction point</strong>. But extraction is economically rational only because the downstream network exists. Dealers, auction houses, and collectors sustain the market — and are rarely prosecuted.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">The Research Output</div>
+    <div class="lft-text"><strong>Prosecution-ready dossiers</strong> for INTERPOL's Works of Art unit. Each dossier traces one theft from extraction site to current location, naming every actant in the chain.</div>
+  </div>
+  <div class="lft-section">
+    <div class="lft-label">Goal</div>
+    <div class="lft-text">Extend legal accountability from the extraction point to every node in the trafficking network. Make the full chain visible and prosecutable.</div>
+  </div>
+</div>
+
+<div class="ctr">
+  <div class="ctr-title">Controversy Mapping — The Full Theft Network</div>
+  <div class="ctr-subtitle">Tracing every actant that makes rock art theft economically viable—from extraction to collection</div>
+  
+  <div class="ctr-scroll">
+    <div class="content-block">
+      <h3>Why Existing Law Is Insufficient</h3>
+      <p>Current heritage protection frameworks target the extraction point—the moment a panel is removed from its site. This is where prosecution typically focuses:</p>
+
+      <div class="problem-box">
+        <p><strong>The prosecution strategy:</strong> Charge the local extractor with theft or trafficking, attempt recovery, impose penalties. This appears to address the problem at its source.</p>
+        <p><strong>The failure:</strong> Extraction is economically rational <em>only because the downstream network exists.</em> Remove panels and have no market to sell them into—extraction becomes economically irrational. But dealers, auction houses, and private collectors sustain the market. They are rarely prosecuted.</p>
+      </div>
+
+      <p><strong>The result:</strong> Even when local extractors are convicted, theft continues because the economic incentive structure remains intact. The downstream network ensures there is always a buyer for stolen rock art.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Latour's Controversy Mapping: Following the Full Chain</h3>
+      <p>Latour's method of controversy mapping traces what he calls "the full path of delegation"—every actor (human and non-human) that constitutes an action. In the context of rock art theft:</p>
+
+      <div class="chain-box">
+        <h4>Step 1: Extraction from Site</h4>
+        <p>A panel is removed. This action requires knowledge of valuable sites, physical tools, and willingness to break law. The extractor acts.</p>
+      </div>
+
+      <div class="chain-box">
+        <h4>Step 2: Transit & Smuggling</h4>
+        <p>Panels must move across borders. This requires routes, contacts, transportation infrastructure. Smugglers and transit personnel act. Customs evasion or corruption enables movement.</p>
+      </div>
+
+      <div class="chain-box">
+        <h4>Step 3: Intermediary Dealers</h4>
+        <p>Dealers purchase from smugglers or local intermediaries. They assess market value, manage inventory, create provenance stories (often false). Dealers are crucial: they transform the object from extracted material into tradeable commodity.</p>
+      </div>
+
+      <div class="chain-box">
+        <h4>Step 4: Auction Houses</h4>
+        <p>Major auction houses (Christie's, Sotheby's, etc.) legitimate stolen rock art by including it in catalogues. Auction houses perform critical function: they verify (often falsely) provenance and confer market value. Their authentication makes theft profitable.</p>
+      </div>
+
+      <div class="chain-box">
+        <h4>Step 5: Private Collectors</h4>
+        <p>Wealthy collectors are the market. They purchase without rigorous due diligence or actively avoid investigation. Their demand sustains the chain. Collection often occurs in Gulf states or private Western collections where oversight is minimal.</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>Each Actor in the Chain Has Agency</h3>
+      <p>ANT's symmetry principle applies: each node in the chain is an actant with agency and power. To interrupt theft, <strong>all nodes must be addressed</strong>:</p>
+
+      <div class="actor-grid">
+        <div class="actor-node">
+          <strong>Extractors (Local)</strong>
+          <em>Power: Direct access, knowledge. Vulnerability: Economically marginal, easily prosecuted, replaceable.</em>
+        </div>
+        <div class="actor-node">
+          <strong>Smugglers/Transit</strong>
+          <em>Power: Network knowledge, border crossing. Vulnerability: Often arrested but rarely convicted; supply always available.</em>
+        </div>
+        <div class="actor-node">
+          <strong>Intermediary Dealers</strong>
+          <em>Power: Market knowledge, capital, laundering expertise. Vulnerability: Operate in shadow economy; difficult to trace.</em>
+        </div>
+        <div class="actor-node">
+          <strong>Auction Houses</strong>
+          <em>Power: Legitimation, market-making, false provenance certification. Vulnerability: Operate publicly; subject to regulation but rarely prosecuted.</em>
+        </div>
+        <div class="actor-node">
+          <strong>Private Collectors</strong>
+          <em>Power: Wealth, demand. Vulnerability: Wealthy; operate in private collections; often have diplomatic immunity or secrecy protections.</em>
+        </div>
+      </div>
+
+      <p><strong>Key insight:</strong> Prosecution of extractors alone is structurally ineffective because it leaves the profitable market intact. Until dealers, auction houses, and collectors face legal accountability, theft will continue.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>What Controversy Mapping Produces</h3>
+
+      <p>The research implements Protocol P4 (Controversy Mapping & Collective Intervention) to produce:</p>
+
+      <div class="chain-box">
+        <h4>Case-by-Case Dossiers</h4>
+        <p>For 4–5 documented theft incidents, the research traces the full chain from extraction site to current location. Each dossier identifies:</p>
+        <p style="margin-left:10px;margin-top:8px">
+          • <strong>When and where extraction occurred</strong> (site documentation)<br>
+          • <strong>Who extracted and sold initially</strong> (community testimony)<br>
+          • <strong>Intermediary dealers</strong> (market tracing)<br>
+          • <strong>Provenance falsification</strong> (document analysis)<br>
+          • <strong>Auction house handling</strong> (catalogue records)<br>
+          • <strong>Current owner/location</strong> (investigative research)
+        </p>
+      </div>
+
+      <div class="chain-box">
+        <h4>Prosecution-Ready Format</h4>
+        <p>Dossiers are formatted for INTERPOL's Works of Art unit and national prosecutors. They provide the evidentiary chain needed to prosecute not only the extractor but intermediaries and auction houses under international trafficking law (UNESCO 1970 Convention, UNIDROIT 1995 Convention).</p>
+      </div>
+
+      <div class="chain-box">
+        <h4>Accountability Mapping</h4>
+        <p>For each node in the chain, the research identifies: Who profits? Who has legal standing? Who can be prosecuted under what laws? Where are enforcement gaps?</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <h3>Why Communities Must Lead the Mapping</h3>
+
+      <p>This is where <strong>PAR's epistemic sovereignty becomes essential.</strong> Communities know:</p>
+
+      <p><strong>• Which panels were stolen and when.</strong> Communities hold oral histories of extraction that official records miss. They know the exact moments loss occurred.</p>
+
+      <p><strong>• Where local extractors sold the panels.</strong> Extractors are often community members. Interviews conducted within community trust reveal chains of sale that external investigators cannot access.</p>
+
+      <p><strong>• What provenance stories are false.</strong> When an auction house claims a panel has "obscure private collection" provenance, community members know this is false because they know the panel's actual history.</p>
+
+      <p><strong>Participatory controversy mapping means communities co-produce the chain, not researchers.</strong> The research provides the ANT framework and legal expertise; communities provide the knowledge.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Legal Implications & Policy Change</h3>
+
+      <p><strong>1. Extended accountability:</strong> Rather than prosecuting only extractors, the chain analysis enables prosecution of dealers, auction houses, and collectors who knowingly traffic in stolen rock art or facilitate provenance fraud.</p>
+
+      <p><strong>2. Auction house liability:</strong> Dossiers demonstrate that major auction houses knowingly sell stolen heritage without proper due diligence. This supports calls for strengthened regulations and potential criminal prosecution.</p>
+
+      <p><strong>3. International cooperation:</strong> Tracing theft chains across multiple countries enables INTERPOL and national authorities to coordinate prosecution and recover stolen objects from current collections.</p>
+
+      <p><strong>4. Structural prevention:</strong> By making the full chain visible and accountable, the research demonstrates where the system is vulnerable and what enforcement would be most effective.</p>
+    </div>
+
+    <div class="content-block">
+      <h3>Transferability: Rock Art Trafficking is Global</h3>
+
+      <p>The same controversy chain operates for Indigenous sites globally. Arctic rock art, Andean petroglyphs, Aboriginal sacred sites—all follow similar trafficking patterns. The auction houses, dealers, and collectors are often the same networks.</p>
+
+      <p><strong>What the research produces is transferable:</strong> A methodology for community-led controversy mapping that can be applied across heritage theft contexts. The specific dossiers are context-specific; the mapping methodology is global.</p>
+    </div>
+  </div>
+</div>
+
+<div class="rgt">
+  <div class="rgt-h">Controversy Framework</div>
+  
+  <div class="rgt-section">
+    <div class="rgt-label">Theorist</div>
+    <div class="rgt-body"><strong>Bruno Latour</strong> — Controversy mapping, actor-network analysis</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Protocol</div>
+    <div class="rgt-body"><strong>P4:</strong> Controversy Mapping & Collective Intervention</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Research Question</div>
+    <div class="rgt-body">Q4: What specific protocols enable communities to represent heritage assemblage agency in negotiations with state institutions and international bodies?</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Chain Nodes</div>
+    <div class="rgt-body">5 core actors: Extractors → Smugglers → Dealers → Auction Houses → Collectors</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Key Innovation</div>
+    <div class="rgt-body">Making the downstream network visible for legal prosecution. Prosecution-ready dossiers for INTERPOL.</div>
+  </div>
+
+  <div class="rgt-section">
+    <div class="rgt-label">Deliverables</div>
+    <div class="rgt-body">4–5 case dossiers (one theft per dossier, traced end-to-end). Full trafficking chain documentation.</div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn" onclick="window.history.back()">Back</button>
+    <button class="btn" onclick="window.location.href='research-governance-view.html'">Next</button>
+  </div>
+</div>
+</div>
+
+<div class="sbar">
+  <span>View: Controversy Mapping — Theft Network Analysis</span>
+  <span>Field cycle: Phase 2–3 (community testimony & investigative research)</span>
+  <span>Cases mapped: 4–5 theft incidents traced end-to-end</span>
+  <span style="margin-left:auto">Simulation — illustrative data only</span>
+</div>
+
+</body>
+</html>
